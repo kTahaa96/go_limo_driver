@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:golimo_driver/common/alert_message.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/core/consts/strings.dart';
-import 'package:golimo_driver/feature/home_page/home_page.dart';
+import 'package:golimo_driver/feature/home_page/home_layout.dart';
 import 'package:golimo_driver/feature/splash/cubit/splash_cubit.dart';
 import 'package:golimo_driver/feature/splash/splash_screen.dart';
 import 'package:golimo_driver/helpers/di/di.dart';
@@ -91,8 +91,8 @@ class MyApp extends StatelessWidget {
               ),
               primaryColor: AppColors.kPrimary,
             ),
-            // home: const HomePage(),
-            home: const SplashScreen(),
+            home: const HomePage(),
+            // home: const SplashScreen(),
           ),
         ),
       ),

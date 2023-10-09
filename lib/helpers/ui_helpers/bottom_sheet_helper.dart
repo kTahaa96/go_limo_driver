@@ -16,7 +16,7 @@ class BottomSheetHelper {
     bool disableMinimumHeight = false,
   }) async {
     return await showModalBottomSheet(
-      backgroundColor: AppColors.kBlueBackBackground,
+      // backgroundColor: AppColors.kBlueBackBackground,
       isDismissible: barrierDismissible,
       isScrollControlled: true,
       context: context,

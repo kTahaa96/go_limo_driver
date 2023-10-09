@@ -44,9 +44,9 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       validator: widget.validator ??
           (value) {
             if (value == null || value.isEmpty) {
-              return 'Enter Your Password';
+              return 'ادخل كلمة المرور';
             } else if (value.length < 8) {
-              return 'Password Must Be More Than 8 Characters';
+              return 'كلمة المرور يجب ان لا تقل عن ٨ حروف او ارقام';
             }
             return null;
           },

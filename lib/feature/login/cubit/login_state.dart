@@ -14,9 +14,7 @@ class ErrorLoginState extends LoginState {
 class LoadingLoginState extends LoginState {}
 
 class SuccessLoginState extends LoginState {
-  final String mobile;
 
-  SuccessLoginState({required this.mobile});
 }
 
 

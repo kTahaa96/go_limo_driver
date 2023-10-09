@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:golimo_driver/common/app_text_field.dart';
-import 'package:golimo_driver/common/input_validator.dart';
+import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
+
+import 'app_text_field.dart';
+import 'input_validator.dart';
 
 class EmailTextField extends StatelessWidget {
   const EmailTextField({
@@ -21,60 +23,24 @@ class EmailTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       focusNode: focusNode,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(
-              color: AppColors.kPrimary,
-              width: 1,
-              style: BorderStyle.solid,
-            )),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(
-                color: AppColors.kPrimary,
-                width: 2,
-                style: BorderStyle.solid,
-              )),
-          focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(
-                color: AppColors.kRed,
-                width: 1,
-                style: BorderStyle.solid,
-              )),
-          errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(
-                color: AppColors.kRed,
-                width: 2,
-                style: BorderStyle.solid,
-              )),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(
-                color: AppColors.kGray,
-                width: 1,
-                style: BorderStyle.solid,
-              )),
-          errorMaxLines: 2,
-          focusColor: AppColors.kBlack,
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          contentPadding: const EdgeInsets.only(right: 0, left: 16, top: 12),
-          hintText: "Email Address",
-          hintStyle: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w700,
-            color: AppColors.kGrayText.withOpacity(0.6),
-          )),
+      textAlignVertical: TextAlignVertical.center,
+      style: const TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+        color: AppColors.kBlack
+      ),
+
+      decoration: const FormInputDecoration(
+        label: AppText(
+          'ادخل البريد الاكتروني',
+          size: 16,
+          color: AppColors.kBlack,
+          weight: FontWeight.w600,
+        ),
+      ),
       autofillHints: const [
         AutofillHints.email,
       ],
-      style: const TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-        color: AppColors.kWhite,
-      ),
       autocorrect: false,
       keyboardType: TextInputType.emailAddress,
       textDirection: TextDirection.ltr,
@@ -82,11 +48,11 @@ class EmailTextField extends StatelessWidget {
       autovalidateMode: isFirst ? AutovalidateMode.disabled : AutovalidateMode.onUserInteraction,
       validator: (value) {
         if (value?.isEmpty ?? true) {
-          return 'Enter Email Address';
+          return 'ادخل البريد الالكتروني';
         }
 
         if (!InputValidator.isEmail(value!)) {
-          return 'Enter A Valid  Email Address';
+          return 'ادخل بريد الكتروني صحيح';
         }
         return null;
       },

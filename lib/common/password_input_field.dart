@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:golimo_driver/common/app_text_field.dart';
+import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 
 class PasswordTextField extends StatefulWidget {
@@ -33,6 +36,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       controller: widget.controller,
       focusNode: widget.focusNode,
       textAlignVertical: TextAlignVertical.center,
+      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w400, color: AppColors.kBlack),
       autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: TextInputType.visiblePassword,
       obscureText: passwordVisibility,
@@ -49,56 +53,12 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       autofillHints: const [
         AutofillHints.password,
       ],
-      style: const TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-        color: AppColors.kWhite,
-      ),
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(
-              color: AppColors.kPrimary,
-              width: 1,
-              style: BorderStyle.solid,
-            )),
-        focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(
-              color: AppColors.kPrimary,
-              width: 2,
-              style: BorderStyle.solid,
-            )),
-        focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(
-              color: AppColors.kRed,
-              width: 2,
-              style: BorderStyle.solid,
-            )),
-        errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(
-              color: AppColors.kRed,
-              width: 2,
-              style: BorderStyle.solid,
-            )),
-        enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(
-              color: AppColors.kGray,
-              width: 1,
-              style: BorderStyle.solid,
-            )),
-        errorMaxLines: 2,
-        focusColor: AppColors.kBlack,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        contentPadding: const EdgeInsets.only(right: 0, left: 16, top: 12),
-        hintText: "Password",
-        hintStyle: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
-          color: AppColors.kGrayText.withOpacity(0.6),
+      decoration: FormInputDecoration(
+        label: AppText(
+          'ادخل كلمة المرور',
+          size: 16.sp,
+          color: AppColors.kBlack,
+          weight: FontWeight.w600,
         ),
         suffixIcon: IconButton(
           icon: Icon(

@@ -72,7 +72,7 @@ class _GetLocationByCityState extends State<GetLocationByCity> {
               children: [
                 Padding(
                   padding: EdgeInsets.all(16.h),
-                  child: CustomInputField(
+                  child: AppTextFormField(
                     controller: textEditingController,
                     focusNode: searchFocusNode,
                     suffixIcon: state is LoadingLocationSearchState
@@ -82,7 +82,7 @@ class _GetLocationByCityState extends State<GetLocationByCity> {
                             height: 20,
                             child: const AppLoader())
                         : const SizedBox(),
-                    hint: "Enter ${widget.isPickUp ? "Pick Up" : "Drop Off"} Information",
+                    hintTitle: "Enter ${widget.isPickUp ? "Pick Up" : "Drop Off"} Information",
                     onChanged: (value) {
                       timerCallBackAction.run(() {
                         cubit.getPlaces(value, widget.cityModel);

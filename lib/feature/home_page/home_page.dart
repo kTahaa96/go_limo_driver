@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:golimo_driver/common/app_logo.dart';
-import 'package:golimo_driver/common/text_hepler.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
-import 'package:golimo_driver/core/consts/strings.dart';
-import 'package:golimo_driver/feature/home_page/widgets/service_item.dart';
-import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,64 +11,73 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int currentPageIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.kBlack,
-        body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                40.sbH,
-                const Center(child: AppLogo()),
-                40.sbH,
-                const AppText(
-                  "Luxury",
-                  size: 40,
-                  weight: FontWeight.w800,
-                ),
-                const AppText(
-                  "Car Rental",
-                  size: 40,
-                  weight: FontWeight.w800,
-                ),
-                const AppText(
-                  "Book Your Luxury Car For Travel\n\Whenever You Want From Your Place",
-                  size: 12,
-                  color: AppColors.kGrayText,
-                ),
-                Image.asset(
-                  "assets/png_images/home_bg_image.jpeg",
-                  width: double.infinity,
-                  height: 250,
-                ),
-                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    ChooseServiceItem(
-                        imagePath: "assets/svg_icons/airport_arrival.svg",
-                        serviceType: ServiceTypes.Airport),
-                    ChooseServiceItem(
-                        imagePath: "assets/svg_icons/car_ride_limo.svg",
-                        serviceType: ServiceTypes.Local),
-                  ],
-                ),
-                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    ChooseServiceItem(
-                        imagePath: "assets/svg_icons/car_ride_limo.svg",
-                        serviceType: ServiceTypes.Rental),
-                    ChooseServiceItem(
-                        imagePath: "assets/svg_icons/travel_limo.svg",
-                        serviceType: ServiceTypes.Travel),
-                  ],
-                ),
-              ],
-            ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentPageIndex,
+
+        onTap: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        selectedLabelStyle: TextStyle(
+          color: Colors.black,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
+        ),
+        unselectedLabelStyle: TextStyle(
+          color: Colors.black,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
+        ),
+        items: <BottomNavigationBarItem>[
+          buildItem(
+            path: 'assets/svg_icons/home_inactive.svg',
+            activePath: 'assets/svg_icons/home_active.svg',
+            label: 'الرئيسية',
           ),
-        ));
+          buildItem(
+            path: 'assets/svg_icons/operations_inactive.svg',
+            activePath: 'assets/svg_icons/operations_active.svg',
+            label: 'اوامر التشغيل',
+          ),
+          buildItem(
+            path: 'assets/svg_icons/rewards_inactive.svg',
+            activePath: 'assets/svg_icons/rewards_active.svg',
+            label: 'الحوافز',
+          ),
+          buildItem(
+            path: 'assets/svg_icons/fuel_inactive.svg',
+            activePath: 'assets/svg_icons/fuel_active.svg',
+            label: 'الوقود',
+          ),
+        ],
+      ),
+    );
+  }
+
+  BottomNavigationBarItem buildItem(
+      {required String label, required String path, required String activePath}) {
+    return BottomNavigationBarItem(
+      icon: SvgPicture.asset(
+        path,
+        width: 24,
+        height: 24,
+      ),
+      activeIcon: SvgPicture.asset(
+        activePath,
+        width: 24,
+        height: 24,
+        color: AppColors.kPrimary,
+      ),
+      label: label,
+
+    );
   }
 }

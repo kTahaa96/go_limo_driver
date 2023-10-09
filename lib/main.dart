@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:golimo_driver/common/alert_message.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
@@ -67,18 +68,18 @@ class MyApp extends StatelessWidget {
             onGenerateRoute: NamedNavigatorImpl.onGenerateRoute,
             navigatorKey: NamedNavigatorImpl.navigatorState,
             debugShowCheckedModeBanner: false,
+            localizationsDelegates: const [
+              GlobalCupertinoLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale("ar"),
+            ],
             title: 'Go Limo App',
             theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: AppColors.kPrimary,
-                brightness: Brightness.dark,
-              ),
-              splashColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              primaryColorLight: AppColors.kPrimary,
-              primaryColorDark: AppColors.kPrimary,
-              scaffoldBackgroundColor: AppColors.kBlack,
-              fontFamily: "Roboto",
+
+              fontFamily: "Alexandria",
               appBarTheme: const AppBarTheme(
                 titleTextStyle: TextStyle(
                   color: AppColors.kWhite,
@@ -90,8 +91,8 @@ class MyApp extends StatelessWidget {
               ),
               primaryColor: AppColors.kPrimary,
             ),
-            home: const HomePage(),
-            // home: const SplashScreen(),
+            // home: const HomePage(),
+            home: const SplashScreen(),
           ),
         ),
       ),

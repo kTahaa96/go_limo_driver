@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 
-class CustomInputField extends StatelessWidget {
-  const CustomInputField({
+class AppTextFormField extends StatelessWidget {
+  const AppTextFormField({
     Key? key,
-    this.hint,
+    this.hintTitle,
     this.controller,
     this.focusNode,
     this.textInputType = TextInputType.text,
@@ -29,7 +29,7 @@ class CustomInputField extends StatelessWidget {
     this.suffixIcon,
   }) : super(key: key);
 
-  final String? hint;
+  final String? hintTitle;
   final FocusNode? focusNode;
   final TextEditingController? controller;
   final TextInputType textInputType;
@@ -58,7 +58,7 @@ class CustomInputField extends StatelessWidget {
       style: TextStyle(
         fontSize: fontSize ?? 16.sp,
         fontWeight: fontWeight ?? FontWeight.w600,
-        color: fontColor ?? AppColors.kWhite,
+        color: fontColor ?? AppColors.kDarkGray,
       ),
       inputFormatters: inputFormatters,
       focusNode: focusNode,
@@ -70,67 +70,25 @@ class CustomInputField extends StatelessWidget {
       onSaved: onSaved,
       maxLines: maxLines,
       textDirection: textDirection,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(
-              color: AppColors.kPrimary,
-              width: 1,
-            )),
-        focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(
-              color: AppColors.kPrimary,
-              width: 2,
-            )),
-        focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(
-              color: AppColors.kRed,
-              width: 1,
-            )),
-        errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(
-              color: AppColors.kRed,
-              width: 2,
-            )),
-        enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(
-              color: AppColors.kGray,
-              width: 1,
-            )),
-        hintText: "$hint",
-        contentPadding: const EdgeInsets.only(right: 0, left: 16, top: 12),
-        hintStyle: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
-          color: AppColors.kGrayText.withOpacity(0.6),
-        ),
+      decoration: FormInputDecoration(
         suffixIcon: suffixIcon,
-        errorStyle: const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: AppColors.kRed,
-        ), // isDense: true,
-        // labelStyle: const TextStyle(fontSize: 14 , fontWeight: FontWeight.w500 , color: Colors.blue),
-        // label: Text.rich(
-        //   TextSpan(
-        //     text: hint,
-        //     children: [
-        //       if (required) ...[
-        //         const TextSpan(
-        //           text: '  *',
-        //           style: TextStyle(
-        //             fontSize: 18,
-        //             color: Colors.red,
-        //           ),
-        //         ),
-        //       ],
-        //     ],
-        //   ),
-        // ),
+        isDense: true,
+        label: Text.rich(
+          TextSpan(
+            text: hintTitle,
+            children: [
+              if (required) ...[
+                const TextSpan(
+                  text: '  *',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.red,
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
       ),
       onChanged: onChanged,
       validator: validator,
@@ -155,51 +113,50 @@ mixin _FormInputDecoration on InputDecoration {
 
   @override
   TextStyle get hintStyle => TextStyle(
-        fontSize: 12.sp,
-        fontWeight: FontWeight.w600,
-        height: null,
-        color: AppColors.kDarkGray,
-      );
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.kDarkGray,
+  );
 
   @override
   TextStyle get errorStyle => TextStyle(
-        fontSize: 12.sp,
-        fontWeight: FontWeight.w400,
-        height: null,
-        color: AppColors.kRed,
-      );
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    height: null,
+    color: AppColors.kRed,
+  );
 
   @override
   TextStyle get labelStyle => TextStyle(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w400,
-        color: AppColors.kDarkGray,
-      );
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.kDarkGray,
+  );
 
   @override
   int? get errorMaxLines => super.errorMaxLines ?? 6;
 
   @override
   InputBorder get border => UnderlineInputBorder(
-        borderRadius: BorderRadius.circular(6),
-        borderSide: const BorderSide(
-          color: AppColors.kLightGray,
-        ),
-      );
+    borderRadius: BorderRadius.circular(6),
+    borderSide: const BorderSide(
+      color: AppColors.kLightGray,
+    ),
+  );
 
   @override
   InputBorder get enabledBorder => UnderlineInputBorder(
-        borderRadius: BorderRadius.circular(6),
-        borderSide: const BorderSide(
-          color: AppColors.kLightGray,
-        ),
-      );
+    borderRadius: BorderRadius.circular(6),
+    borderSide: const BorderSide(
+      color: AppColors.kLightGray,
+    ),
+  );
 
   @override
   InputBorder get focusedBorder => UnderlineInputBorder(
-        borderRadius: BorderRadius.circular(6),
-        borderSide: const BorderSide(
-          color: Colors.black,
-        ),
-      );
+    borderRadius: BorderRadius.circular(6),
+    borderSide: const BorderSide(
+      color: Colors.black,
+    ),
+  );
 }

@@ -17,6 +17,7 @@ class AppColors {
   static const Color kGreenBackground = Color(0xffF2F8F5);
   static const Color kDarkGreyText = Color(0xff252525);
   static const Color kBlueBackBackground = Color(0xff100a12);
+  static const Color kBottomNavColor = Color(0xffFEFBFF);
 }
 
 extension GetColor on Color {

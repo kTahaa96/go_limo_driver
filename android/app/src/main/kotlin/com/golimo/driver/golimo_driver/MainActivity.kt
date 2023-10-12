@@ -1,4 +1,4 @@
-package com.golimo.driver.golimo_driver
+package com.golimo.driver
 
 import io.flutter.embedding.android.FlutterActivity
 

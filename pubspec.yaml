@@ -56,6 +56,7 @@ flutter:
     - assets/png_images/
     - assets/svg_icons/
     - assets/fonts/
+    - assets/map_style/
     - .env
 
   fonts:

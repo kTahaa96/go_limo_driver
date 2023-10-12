@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 extension EmptyPadding on num {
-  SizedBox get sbH => SizedBox(height: toDouble());
+  SizedBox get sbH => SizedBox(height: toDouble().h);
 
-  SizedBox get sbW => SizedBox(width: toDouble());
+  SizedBox get sbW => SizedBox(width: toDouble().h);
 }
 
 extension CurrencyFormatExtension on num {

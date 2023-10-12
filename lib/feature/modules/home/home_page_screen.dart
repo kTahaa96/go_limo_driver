@@ -24,7 +24,6 @@ class HomePageScreen extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  height: 374.h,
                   width: double.infinity,
                   padding: EdgeInsets.all(16.w),
                   decoration: BoxDecoration(
@@ -99,7 +98,7 @@ class HomePageScreen extends StatelessWidget {
                   ),
                 ),
                 ListView.separated(
-                  padding: const EdgeInsets.all(0),
+                  padding:  EdgeInsets.symmetric(horizontal: 16.w),
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {

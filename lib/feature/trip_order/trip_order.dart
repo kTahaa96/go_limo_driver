@@ -4,6 +4,7 @@ import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/trip_order/widgets/map_view.dart';
 import 'package:golimo_driver/feature/trip_order/widgets/passenger_view.dart';
+import 'package:golimo_driver/feature/trip_order/widgets/trip_details_view.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
 class TripOrder extends StatefulWidget {
@@ -126,6 +127,7 @@ class _TripOrderState extends State<TripOrder> {
                       child: const TabBarView(
                         physics: NeverScrollableScrollPhysics(),
                         children: [
+                          TripDetailsView(),
                           PassengerView(),
                         ],
                       ),

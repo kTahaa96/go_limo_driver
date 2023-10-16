@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
+import 'package:golimo_driver/feature/help_center/help_center.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
 import '../feature/notificatiton_center/notification_center.dart';
@@ -31,11 +32,17 @@ class AppBarRow extends StatelessWidget {
         ),
         Row(
           children: [
-            SvgPicture.asset(
-              'assets/svg_icons/doughnut_chart.svg',
-              width: 24.w,
-              height: 24.h,
-              color: onBackground == true ? AppColors.kWhite : AppColors.kBlack,
+            InkWell(
+              onTap: (){
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => HelpCenter()));
+              },
+              child: SvgPicture.asset(
+                'assets/svg_icons/doughnut_chart.svg',
+                width: 24.w,
+                height: 24.h,
+                color: onBackground == true ? AppColors.kWhite : AppColors.kBlack,
+              ),
             ),
             8.sbW,
             InkWell(

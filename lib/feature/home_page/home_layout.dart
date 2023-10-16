@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/home_page/cubit/home_lay_out_cubit.dart';
 import 'package:golimo_driver/feature/modules/driver_order/driver_orders.dart';
-import 'package:golimo_driver/feature/modules/fuel_screen.dart';
+import 'package:golimo_driver/feature/modules/fuel/fuel_screen.dart';
 import 'package:golimo_driver/feature/modules/home/home_page_screen.dart';
 import 'package:golimo_driver/feature/modules/rewards/rewards.dart';
 import 'package:golimo_driver/helpers/di/di.dart';

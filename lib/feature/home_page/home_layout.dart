@@ -63,23 +63,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                   label: 'الرئيسية',
                 ),
+
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
-                    'assets/svg_icons/operations_active.svg',
-                    width: 24,
-                    height: 24,
-                  ),
-                  activeIcon: SvgPicture.asset(
-                    'assets/svg_icons/operations_active.svg',
-                    width: 24,
-                    height: 24,
-                    color: AppColors.kPrimary,
-                  ),
-                  label: 'الرئيسية',
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    'assets/svg_icons/operations_active.svg',
+                    'assets/svg_icons/operations_inactive.svg',
                     width: 24,
                     height: 24,
                   ),

@@ -123,7 +123,7 @@ class _TripOrderState extends State<TripOrder> {
                       ],
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height - 150,
+                      height: MediaQuery.of(context).size.height - 250,
                       child: const TabBarView(
                         physics: NeverScrollableScrollPhysics(),
                         children: [

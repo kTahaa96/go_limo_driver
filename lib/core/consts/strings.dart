@@ -18,8 +18,7 @@ class Strings {
       "733369482770-j4sid83v47ucqrbd590e6h7mgp00u5vr.apps.googleusercontent.com";
   static const String googleIosSignInKey =
       "733369482770-v257q841136vmhg5u9gujv43iiec09vl.apps.googleusercontent.com";
-static const String addressSceeme =
-      "st.222 degla Maadi Sarayat , Cairo , Egypt";
+  static const String addressSceeme = "st.222 degla Maadi Sarayat , Cairo , Egypt";
 }
 
 // ignore: constant_identifier_names

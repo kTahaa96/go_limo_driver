@@ -19,10 +19,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Widget> screensList = [
-    HomePageScreen(),
-    DriverOrders(),
-    RewardsScreen(),
-    FuelScreen(),
+    const HomePageScreen(),
+    const DriverOrders(),
+    const RewardsScreen(),
+    const FuelScreen(),
   ];
 
   @override
@@ -49,24 +49,74 @@ class _HomePageState extends State<HomePage> {
                 fontWeight: FontWeight.w500,
               ),
               items: <BottomNavigationBarItem>[
-                buildItem(
-                  path: 'assets/svg_icons/home_inactive.svg',
-                  activePath: 'assets/svg_icons/home_active.svg',
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/svg_icons/home_inactive.svg',
+                    width: 24,
+                    height: 24,
+                  ),
+                  activeIcon: SvgPicture.asset(
+                    'assets/svg_icons/home_active.svg',
+                    width: 24,
+                    height: 24,
+                    color: AppColors.kPrimary,
+                  ),
                   label: 'الرئيسية',
                 ),
-                buildItem(
-                  path: 'assets/svg_icons/operations_inactive.svg',
-                  activePath: 'assets/svg_icons/operations_active.svg',
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/svg_icons/operations_active.svg',
+                    width: 24,
+                    height: 24,
+                  ),
+                  activeIcon: SvgPicture.asset(
+                    'assets/svg_icons/operations_active.svg',
+                    width: 24,
+                    height: 24,
+                    color: AppColors.kPrimary,
+                  ),
+                  label: 'الرئيسية',
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/svg_icons/operations_active.svg',
+                    width: 24,
+                    height: 24,
+                  ),
+                  activeIcon: SvgPicture.asset(
+                    'assets/svg_icons/operations_active.svg',
+                    width: 24,
+                    height: 24,
+                    color: AppColors.kPrimary,
+                  ),
                   label: 'اوامر التشغيل',
                 ),
-                buildItem(
-                  path: 'assets/svg_icons/rewards_inactive.svg',
-                  activePath: 'assets/svg_icons/rewards_active.svg',
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/svg_icons/rewards_inactive.svg',
+                    width: 24,
+                    height: 24,
+                  ),
+                  activeIcon: SvgPicture.asset(
+                    'assets/svg_icons/rewards_active.svg',
+                    width: 24,
+                    height: 24,
+                    color: AppColors.kPrimary,
+                  ),
                   label: 'الحوافز',
                 ),
-                buildItem(
-                  path: 'assets/svg_icons/fuel_inactive.svg',
-                  activePath: 'assets/svg_icons/fuel_active.svg',
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/svg_icons/fuel_inactive.svg',
+                    width: 24,
+                    height: 24,
+                  ),
+                  activeIcon: SvgPicture.asset(
+                    'assets/svg_icons/fuel_active.svg',
+                    width: 24,
+                    height: 24,
+                    color: AppColors.kPrimary,
+                  ),
                   label: 'الوقود',
                 ),
               ],
@@ -75,24 +125,6 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
-    );
-  }
-
-  BottomNavigationBarItem buildItem(
-      {required String label, required String path, required String activePath}) {
-    return BottomNavigationBarItem(
-      icon: SvgPicture.asset(
-        path,
-        width: 24,
-        height: 24,
-      ),
-      activeIcon: SvgPicture.asset(
-        activePath,
-        width: 24,
-        height: 24,
-        color: AppColors.kPrimary,
-      ),
-      label: label,
     );
   }
 }

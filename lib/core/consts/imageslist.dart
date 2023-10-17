@@ -5,7 +5,4 @@ class CarsList {
     "https://pngimg.com/d/mercedes_PNG80135.png",
     "https://i.pinimg.com/originals/41/ae/f1/41aef11685c001bc3a19aaacfcf9a145.png"
   ];
-
-
-
 }

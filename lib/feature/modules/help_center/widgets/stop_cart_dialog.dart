@@ -15,7 +15,7 @@ class StopCarDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 300.h,
-      width: 388.w,
+      // width: 400.sw,
       child: Column(
         children: [
           InkWell(

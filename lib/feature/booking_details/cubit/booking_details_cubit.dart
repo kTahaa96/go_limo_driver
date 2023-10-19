@@ -16,7 +16,17 @@ class BookingDetailsCubit extends Cubit<BookingDetailsState> {
 
   void changeOrderState(int newState) {
     orderStatus = newState;
-    emit(UpdateBookingDetailsState());
+    if (orderStatus == 1) {
+      emit(ConfirmReceiptBookState());
+    } else if (orderStatus == 2) {
+      emit(LoadingBookState());
+    } else if (orderStatus == 3) {
+      emit(StartTripState());
+    } else if (orderStatus == 4) {
+      emit(ConfirmedFuelSettingState());
+    } else if (orderStatus == 5) {
+      emit(ConfirmedTripSettingState());
+    }
   }
 
   void startTimer() {

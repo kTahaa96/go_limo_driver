@@ -41,7 +41,7 @@ class BottomSheetHelper {
                   //         disableMinimumHeight ? 0.0 : MediaQuery.of(context).size.height * 0.4),
                   width: MediaQuery.of(context).size.width,
                   padding: const EdgeInsets.only(top: 15.0),
-                  height: 350.h,
+                  height: maxHeight ?? 350.h,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,

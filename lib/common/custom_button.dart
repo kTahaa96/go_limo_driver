@@ -29,11 +29,10 @@ class CustomButton extends StatelessWidget {
       onTap: onBtnTap,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: withPadding == false ? 0 : 30),
-        // margin: EdgeInsets.symmetric(horizontal: withMargin == true ? 16 : 0),
         height: 60.h,
         width: width,
         decoration: BoxDecoration(
-            color: color ?? Color(0xff252525),
+            color: color ?? const Color(0xff252525),
             borderRadius: BorderRadius.circular(50),
             border: borderColor == null
                 ? null

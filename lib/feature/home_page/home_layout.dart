@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/home_page/cubit/home_lay_out_cubit.dart';
 import 'package:golimo_driver/feature/modules/driver_order/driver_orders.dart';
 import 'package:golimo_driver/feature/modules/fuel/fuel_screen.dart';
 import 'package:golimo_driver/feature/modules/help_center/help_center.dart';
 import 'package:golimo_driver/feature/modules/home/home_page_screen.dart';
-import 'package:golimo_driver/feature/modules/home/widgets/daily_tasks_single_item.dart';
 import 'package:golimo_driver/feature/modules/notificatiton_center/notification_center.dart';
 import 'package:golimo_driver/feature/modules/rewards/rewards.dart';
 import 'package:golimo_driver/helpers/di/di.dart';
@@ -41,7 +39,6 @@ class _HomePageState extends State<HomePage> {
           final cubit = HomeLayOutCubit.of(context);
           return Scaffold(
             appBar: AppBar(
-
               backgroundColor: cubit.currentIndex == 0 || cubit.currentIndex == 2
                   ? AppColors.kPrimaryBackground
                   : AppColors.kBackground,
@@ -52,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       InkWell(
                         onTap: () {
-                          // cubit.updatePageIndex(newVal: 5);
+                          cubit.updatePageIndex(newVal: 5);
                         },
                         child: SvgPicture.asset(
                           'assets/svg_icons/doughnut_chart.svg',
@@ -66,13 +63,13 @@ class _HomePageState extends State<HomePage> {
                       8.sbW,
                       InkWell(
                         onTap: () {
-                          // cubit.updatePageIndex(newVal: 4);
+                          cubit.updatePageIndex(newVal: 4);
                         },
                         child: SvgPicture.asset(
                           'assets/svg_icons/home_notificatoin.svg',
                           width: 24.w,
                           height: 24.h,
-                          color: cubit.currentIndex == 0 || cubit.currentIndex ==2
+                          color: cubit.currentIndex == 0 || cubit.currentIndex == 2
                               ? AppColors.kWhite
                               : AppColors.kBlack,
                         ),
@@ -85,7 +82,7 @@ class _HomePageState extends State<HomePage> {
               leading: Container(
                 width: 30.w,
                 height: 30.h,
-                padding: EdgeInsets.only(right: 16.w , left: 8  ),
+                padding: EdgeInsets.only(right: 16.w, left: 8),
                 child: SvgPicture.asset(
                   'assets/svg_icons/driver_icon.svg',
                 ),
@@ -164,6 +161,34 @@ class _HomePageState extends State<HomePage> {
                     color: AppColors.kPrimary,
                   ),
                   label: 'الحوافز',
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/svg_icons/fuel_inactive.svg',
+                    width: 24,
+                    height: 24,
+                  ),
+                  activeIcon: SvgPicture.asset(
+                    'assets/svg_icons/fuel_active.svg',
+                    width: 24,
+                    height: 24,
+                    color: AppColors.kPrimary,
+                  ),
+                  label: 'الوقود',
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/svg_icons/fuel_inactive.svg',
+                    width: 24,
+                    height: 24,
+                  ),
+                  activeIcon: SvgPicture.asset(
+                    'assets/svg_icons/fuel_active.svg',
+                    width: 24,
+                    height: 24,
+                    color: AppColors.kPrimary,
+                  ),
+                  label: 'الوقود',
                 ),
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(

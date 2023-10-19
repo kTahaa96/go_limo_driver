@@ -8,6 +8,7 @@ import 'package:golimo_driver/common/alert_message.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/core/consts/strings.dart';
 import 'package:golimo_driver/feature/home_page/home_layout.dart';
+import 'package:golimo_driver/feature/modules/help_center/help_center.dart';
 import 'package:golimo_driver/feature/splash/cubit/splash_cubit.dart';
 import 'package:golimo_driver/helpers/di/di.dart';
 import 'package:golimo_driver/helpers/navigator/named-navigator_impl.dart';

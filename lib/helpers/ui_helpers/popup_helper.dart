@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:golimo_driver/common/custom_button.dart';
-import 'package:golimo_driver/core/consts/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PopupHelper {
   static Future<bool?> showDialog({
@@ -23,8 +22,7 @@ class PopupHelper {
             alignment: Alignment.center,
             elevation: 5,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-            content: content,
-
+            content: Container(width: 388.w, child: content),
           ),
         );
       },

@@ -27,7 +27,15 @@ class _TripOrderState extends State<TripOrder> {
       backgroundColor: AppColors.kBackground,
       body: BlocProvider(
         create: (context) => di<BookingDetailsCubit>(),
-        child: BlocBuilder<BookingDetailsCubit, BookingDetailsState>(
+        child: BlocConsumer<BookingDetailsCubit, BookingDetailsState>(
+          listener: (context, state) {
+            final cubit = BookingDetailsCubit.of(context);
+            if (state is ConfirmReceiptBookState) {
+              Future.delayed(const Duration(seconds: 2), () {
+                cubit.changeOrderState(2);
+              });
+            }
+          },
           builder: (context, state) {
             final cubit = BookingDetailsCubit.of(context);
             return CustomScrollView(
@@ -136,22 +144,20 @@ class _TripOrderState extends State<TripOrder> {
                             ],
                           ),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height - 250,
+                            height: MediaQuery.of(context).size.height - 150,
                             child: TabBarView(
                               children: [
                                 TripDetailsView(
                                   onBtnTap: () {
-                                    cubit.changeOrderState(cubit.orderStatus +1);
+                                    cubit.changeOrderState(cubit.orderStatus + 1);
                                     log('${cubit.orderStatus}');
-
                                   },
                                   isAirportTrip: true,
                                   orderStatus: cubit.orderStatus,
                                 ),
                                 PassengerView(
                                   onBtnTap: () {
-                                    cubit.changeOrderState(cubit.orderStatus +1);
-
+                                    cubit.changeOrderState(cubit.orderStatus + 1);
                                   },
                                   orderStatus: cubit.orderStatus,
                                 ),

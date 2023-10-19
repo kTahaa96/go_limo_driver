@@ -1,9 +1,10 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
+import 'package:golimo_driver/feature/booking_details/cubit/booking_details_cubit.dart';
 import 'package:golimo_driver/feature/home_page/cubit/home_lay_out_cubit.dart';
 import 'package:golimo_driver/feature/login/cubit/login_cubit.dart';
 import 'package:golimo_driver/feature/modules/home/cubit/home_cubit.dart';
-import 'package:golimo_driver/feature/notificatiton_center/cubit/notification_center_cubit.dart';
+import 'package:golimo_driver/feature/modules/notificatiton_center/cubit/notification_center_cubit.dart';
 import 'package:golimo_driver/feature/splash/cubit/splash_cubit.dart';
 import 'package:golimo_driver/helpers/local/cache_helper.dart';
 import 'package:golimo_driver/helpers/location_helper/cubit/location_cubit.dart';
@@ -42,4 +43,5 @@ Future init() async {
   di.registerFactory<HomeLayOutCubit>(() => HomeLayOutCubit());
   di.registerFactory<HomeCubit>(() => HomeCubit());
   di.registerFactory<NotificationCenterCubit>(() => NotificationCenterCubit());
+  di.registerFactory<BookingDetailsCubit>(() => BookingDetailsCubit());
 }

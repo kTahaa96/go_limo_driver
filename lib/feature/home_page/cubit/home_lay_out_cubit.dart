@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -11,7 +13,9 @@ class HomeLayOutCubit extends Cubit<HomeLayOutState> {
   int currentIndex = 0;
 
   void updatePageIndex({required int newVal}) {
+    log('===> $newVal');
     currentIndex = newVal;
+
     emit(UpdatePageIndexState());
   }
 }

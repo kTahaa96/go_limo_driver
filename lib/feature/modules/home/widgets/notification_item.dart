@@ -99,6 +99,7 @@ class NotificationItem extends StatelessWidget {
             onTap: () {
               BottomSheetHelper.gShowModalBottomSheet(
                   context: context,
+                  maxHeight: 330,
                   isPaddingAll: true,
                   content: StopReasonsView(
                     onReasonSelect: (reason) {
@@ -106,6 +107,7 @@ class NotificationItem extends StatelessWidget {
                         Navigator.pop(context);
                         BottomSheetHelper.gShowModalBottomSheet(
                           context: context,
+                          maxHeight: 330,
                           barrierDismissible: true,
                           content: const EnterReasonView(),
                         );

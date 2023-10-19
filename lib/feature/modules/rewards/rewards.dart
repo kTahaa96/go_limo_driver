@@ -27,9 +27,7 @@ class RewardsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                32.sbH,
-                AppBarRow(label: 'الحوافز' , onBackground: true),
-                16.sbH,
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [

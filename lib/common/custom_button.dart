@@ -33,7 +33,7 @@ class CustomButton extends StatelessWidget {
         height: 60.h,
         width: width,
         decoration: BoxDecoration(
-            color: color ?? AppColors.kBlack,
+            color: color ?? Color(0xff252525),
             borderRadius: BorderRadius.circular(50),
             border: borderColor == null
                 ? null
@@ -44,6 +44,12 @@ class CustomButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            icon != null
+                ? Padding(
+              padding: const EdgeInsets.only(left: 14),
+              child: icon ?? const SizedBox(),
+            )
+                : const SizedBox(),
             Text(
               buttonText,
               style: TextStyle(
@@ -52,12 +58,7 @@ class CustomButton extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            icon != null
-                ? Padding(
-                    padding: const EdgeInsets.only(left: 14),
-                    child: icon ?? const SizedBox(),
-                  )
-                : const SizedBox(),
+
           ],
         ),
       ),

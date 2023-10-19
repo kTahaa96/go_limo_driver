@@ -21,6 +21,7 @@ class HomePageScreen extends StatelessWidget {
         builder: (context, state) {
           final cubit = HomeCubit.of(context);
           return SingleChildScrollView(
+            physics: const NeverScrollableScrollPhysics(),
             child: Column(
               children: [
                 Container(
@@ -35,43 +36,7 @@ class HomePageScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      32.sbH,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              SvgPicture.asset(
-                                'assets/svg_icons/driver_icon.svg',
-                                width: 30.w,
-                                height: 30.h,
-                              ),
-                              8.sbW,
-                              AppText(
-                                'اهلا اسامة',
-                                color: AppColors.kWhite,
-                                size: 15.sp,
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              SvgPicture.asset(
-                                'assets/svg_icons/doughnut_chart.svg',
-                                width: 24.w,
-                                height: 24.h,
-                              ),
-                              8.sbW,
-                              SvgPicture.asset(
-                                'assets/svg_icons/home_notificatoin.svg',
-                                width: 24.w,
-                                height: 24.h,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      16.sbH,
+
                       AppText(
                         'اوامر شغل اليوم',
                         size: 14.sp,
@@ -100,7 +65,7 @@ class HomePageScreen extends StatelessWidget {
                 ListView.separated(
                   padding:  EdgeInsets.symmetric(horizontal: 16.w),
                     shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
+                    // physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return NotificationItem(
                         model: cubit.notificationList[index],

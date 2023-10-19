@@ -12,13 +12,11 @@ class DriverOrders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics: const NeverScrollableScrollPhysics(),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            32.sbH,
-            const AppBarRow(label: 'أوامر الشغل' ,),
-            32.sbH,
             DefaultTabController(
               length: 2,
               child: Column(
@@ -54,22 +52,20 @@ class DriverOrders extends StatelessWidget {
                       ],
                     ),
                   ),
+                  16.sbH,
                   SizedBox(
-                    height: MediaQuery.of(context).size.height - 150,
+                    height: MediaQuery.of(context).size.height - 280,
                     child: TabBarView(
-                      physics: const NeverScrollableScrollPhysics(),
                       children: [
                         ListView.builder(
-                            itemCount: 12,
+                            itemCount: 14,
                             shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
                               return const DailyTaskHomePageRow();
                             }),
                         ListView.builder(
-                            itemCount: 12,
+                            itemCount: 14,
                             shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
                               return const DailyTaskHomePageRow();
                             })

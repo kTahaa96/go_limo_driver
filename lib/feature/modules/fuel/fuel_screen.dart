@@ -18,11 +18,7 @@ class FuelScreen extends StatelessWidget {
         children: [
           Column(
             children: [
-              32.sbH,
-              const AppBarRow(
-                label: 'الوقود',
-              ),
-              16.sbH,
+
               ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),

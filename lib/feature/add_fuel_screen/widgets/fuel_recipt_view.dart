@@ -61,7 +61,7 @@ class FinalFuelView extends StatelessWidget {
                         decoration: InputDecoration(border: InputBorder.none),
                       ),
                     ),
-                    16.sbW,
+                    12.sbW,
                     Row(
                       children: [
                         Container(
@@ -69,7 +69,9 @@ class FinalFuelView extends StatelessWidget {
                           height: 42.h,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(36.r),
-                              border: Border.all(color: AppColors.kPrimary)),
+                              border: Border.all(
+                                color: AppColors.kPrimary,
+                              )),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

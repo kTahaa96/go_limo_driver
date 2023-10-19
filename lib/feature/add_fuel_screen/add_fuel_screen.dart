@@ -2,13 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:golimo_driver/common/app_bar_row.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/add_fuel_screen/widgets/after_add_fuel.dart';
 import 'package:golimo_driver/feature/add_fuel_screen/widgets/befor_add.dart';
 import 'package:golimo_driver/feature/add_fuel_screen/widgets/fuel_recipt_view.dart';
 import 'package:golimo_driver/feature/add_fuel_screen/widgets/stepper_item.dart';
-import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
 class AddFullScreen extends StatefulWidget {
   const AddFullScreen({super.key});
@@ -27,9 +25,6 @@ class _AddFullScreenState extends State<AddFullScreen> {
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Column(
           children: [
-            32.sbH,
-            AppBarRow(label: 'الوقود'),
-            16.sbH,
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

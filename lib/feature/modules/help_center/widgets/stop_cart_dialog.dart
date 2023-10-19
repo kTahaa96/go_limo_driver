@@ -3,9 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:golimo_driver/common/custom_button.dart';
 import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
-import 'package:golimo_driver/feature/help_center/widgets/enter_text_view.dart';
 import 'package:golimo_driver/helpers/ui_helpers/bottom_sheet_helper.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
+
+import 'enter_text_view.dart';
 
 class StopCarDialog extends StatelessWidget {
   const StopCarDialog({super.key});
@@ -66,6 +67,7 @@ class StopCarDialog extends StatelessWidget {
     Navigator.pop(context);
     Future.delayed(Duration(microseconds: 300), () {
       BottomSheetHelper.gShowModalBottomSheet(
+        maxHeight: 330.h,
           context: context, content: const EnterConflictWithCustomerView());
     });
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
+import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
 class BottomSheetHelper {
   static Future<bool?> gShowModalBottomSheet({
@@ -20,11 +21,10 @@ class BottomSheetHelper {
       isDismissible: barrierDismissible,
       isScrollControlled: true,
       context: context,
-      constraints: BoxConstraints(
-          maxHeight: maxHeight ?? 330,
-          minHeight: disableMinimumHeight ? 0.0 : MediaQuery.of(context).size.height * 0.4,
-          maxWidth: maxWidth ?? MediaQuery.of(context).size.width),
-      // backgroundColor: backgroundColor ?? Theme.of(context).backgroundColor,
+      // constraints: BoxConstraints(
+      //     maxHeight: maxHeight ?? 330,
+      //     minHeight: disableMinimumHeight ? 0.0 : MediaQuery.of(context).size.height * 0.4,
+      //     maxWidth: maxWidth ?? MediaQuery.of(context).size.width),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
         topRight: Radius.circular(20.r),
@@ -35,16 +35,13 @@ class BottomSheetHelper {
             ? Padding(
                 padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: Container(
-                  constraints: BoxConstraints(
-                      maxHeight: maxHeight ?? MediaQuery.of(context).size.height * 0.9,
-                      minHeight:
-                          disableMinimumHeight ? 0.0 : MediaQuery.of(context).size.height * 0.4),
+                  // constraints: BoxConstraints(
+                  //     maxHeight: maxHeight ?? MediaQuery.of(context).size.height * 0.9,
+                  //     minHeight:
+                  //         disableMinimumHeight ? 0.0 : MediaQuery.of(context).size.height * 0.4),
                   width: MediaQuery.of(context).size.width,
-                  // alignment: Alignment.center,
                   padding: const EdgeInsets.only(top: 15.0),
-                  decoration: const BoxDecoration(
-                      // borderRadius: BorderRadius.vertical(top: Radius.circular(CornerRadius.xl)),
-                      ),
+                  height: 350.h,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -57,17 +54,15 @@ class BottomSheetHelper {
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-                      const SizedBox(height: 15.0),
+                      15.sbH,
                       Flexible(child: content),
                     ],
                   ),
                 ),
               )
-            : SizedBox(
-                child: Padding(
-                  padding: EdgeInsets.only(bottom: 24.h),
-                  child: content,
-                ),
+            : Container(
+                padding: EdgeInsets.only(bottom: 24.h),
+                child: content,
               );
       },
     );

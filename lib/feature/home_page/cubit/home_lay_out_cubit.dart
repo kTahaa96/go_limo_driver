@@ -10,7 +10,7 @@ class HomeLayOutCubit extends Cubit<HomeLayOutState> {
 
   static HomeLayOutCubit of(context) => BlocProvider.of(context);
 
-  int currentIndex = 5;
+  int currentIndex = 0;
 
   void updatePageIndex({required int newVal}) {
     log('===> $newVal');

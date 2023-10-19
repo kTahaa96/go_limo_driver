@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       InkWell(
                         onTap: () {
-                          cubit.updatePageIndex(newVal: 5);
+                          // cubit.updatePageIndex(newVal: 5);
                         },
                         child: SvgPicture.asset(
                           'assets/svg_icons/doughnut_chart.svg',
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                       8.sbW,
                       InkWell(
                         onTap: () {
-                          cubit.updatePageIndex(newVal: 4);
+                          // cubit.updatePageIndex(newVal: 4);
                         },
                         child: SvgPicture.asset(
                           'assets/svg_icons/home_notificatoin.svg',
@@ -176,34 +176,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   label: 'الوقود',
                 ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    'assets/svg_icons/fuel_inactive.svg',
-                    width: 24,
-                    height: 24,
-                  ),
-                  activeIcon: SvgPicture.asset(
-                    'assets/svg_icons/fuel_active.svg',
-                    width: 24,
-                    height: 24,
-                    color: AppColors.kPrimary,
-                  ),
-                  label: 'الوقود',
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    'assets/svg_icons/fuel_inactive.svg',
-                    width: 24,
-                    height: 24,
-                  ),
-                  activeIcon: SvgPicture.asset(
-                    'assets/svg_icons/fuel_active.svg',
-                    width: 24,
-                    height: 24,
-                    color: AppColors.kPrimary,
-                  ),
-                  label: 'الوقود',
-                ),
+
               ],
             ),
             body: screensList[cubit.currentIndex],

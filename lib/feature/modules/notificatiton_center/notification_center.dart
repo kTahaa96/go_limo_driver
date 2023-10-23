@@ -25,22 +25,16 @@ class _NotificationCenterState extends State<NotificationCenter> {
             final cubit = NotificationCenterCubit.of(context);
             return SingleChildScrollView(
               padding: EdgeInsets.all(16),
-              child: Column(
-                children: [
-
-                  ListView.separated(
-                      padding: EdgeInsets.only(top: 61.h),
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        return NotificationItem(
-                          model: cubit.notificationList[index],
-                        );
-                      },
-                      separatorBuilder: (context, index) => Divider(),
-                      itemCount: cubit.notificationList.length)
-                ],
-              ),
+              child: ListView.separated(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return NotificationItem(
+                      model: cubit.notificationList[index],
+                    );
+                  },
+                  separatorBuilder: (context, index) => Divider(),
+                  itemCount: cubit.notificationList.length),
             );
           },
         ),

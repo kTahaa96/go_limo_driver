@@ -84,6 +84,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           AppText(
             label,
             color: index == widget.currentIndex ? AppColors.kPrimary : AppColors.kBlack,
+            size: index == widget.currentIndex ? 13.sp : 12.sp,
           )
         ],
       ),

@@ -107,7 +107,7 @@ class NotificationItem extends StatelessWidget {
                         Navigator.pop(context);
                         BottomSheetHelper.gShowModalBottomSheet(
                           context: context,
-                          maxHeight: 330,
+                          maxHeight: 350,
                           barrierDismissible: true,
                           content: const EnterReasonView(),
                         );

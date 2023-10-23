@@ -22,7 +22,7 @@ class PopupHelper {
             alignment: Alignment.center,
             elevation: 5,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-            content: Container(width: 388.w, child: content),
+            content: SizedBox(width: 388.w, child: content),
           ),
         );
       },

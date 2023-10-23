@@ -2,31 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PopupHelper {
-  static Future<bool?> showDialog({
+  static gShowDialog({
     required BuildContext context,
     required Widget content,
     bool? barrierDismissible,
-    List<Widget>? options,
-  }) async {
-    return await showGeneralDialog(
-      context: context,
+  }) {
+    showDialog(
       barrierDismissible: barrierDismissible ?? false,
-      pageBuilder: (ctx, a1, a2) {
-        return Container();
-      },
-      transitionBuilder: (ctx, a1, a2, child) {
-        var curve = Curves.easeInOut.transform(a1.value);
-        return Transform.scale(
-          scale: curve,
-          child: AlertDialog(
-            alignment: Alignment.center,
-            elevation: 5,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-            content: SizedBox(width: 388.w, child: content),
+      useSafeArea: true,
+      context: context,
+      builder: (BuildContext context) => AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.bounceIn,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        child: Dialog(
+          insetPadding: EdgeInsets.all(20.w),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.0),
           ),
-        );
-      },
-      transitionDuration: const Duration(milliseconds: 300),
+          child: Container(
+            width: double.infinity,
+            height: 323.h,
+            padding: EdgeInsets.all(20.w),
+            child: content,
+          ),
+        ),
+      ),
     );
   }
 }

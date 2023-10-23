@@ -20,49 +20,49 @@ class HomePageScreen extends StatelessWidget {
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           final cubit = HomeCubit.of(context);
-          return SingleChildScrollView(
-            physics: const NeverScrollableScrollPhysics(),
-            child: Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.all(16.w),
-                  decoration: BoxDecoration(
-                      color: AppColors.kPrimaryBackground,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(18.r),
-                        bottomRight: Radius.circular(18.r),
-                      )),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+          return Column(
+            children: [
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.all(16.w),
+                decoration: BoxDecoration(
+                    color: AppColors.kPrimaryBackground,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(18.r),
+                      bottomRight: Radius.circular(18.r),
+                    )),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
-                      AppText(
-                        'اوامر شغل اليوم',
-                        size: 14.sp,
-                        weight: FontWeight.w500,
-                        color: AppColors.kWhite,
-                      ),
-                      8.sbH,
-                      Column(
-                        children: [
-                          const DailyTaskHomePageRow(),
-                          12.sbH,
-                          const DailyTaskHomePageRow(),
-                        ],
-                      ),
-                    ],
-                  ),
+                    AppText(
+                      'اوامر شغل اليوم',
+                      size: 14.sp,
+                      weight: FontWeight.w500,
+                      color: AppColors.kWhite,
+                    ),
+                    8.sbH,
+                    Column(
+                      children: [
+                        const DailyTaskHomePageRow(),
+                        12.sbH,
+                        const DailyTaskHomePageRow(),
+                      ],
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: EdgeInsets.all(16.w),
-                  child: const Row(
-                    children: [
-                      AppText('تنبيهات مهمة', color: AppColors.kGrayText),
-                    ],
-                  ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(16.w),
+                child: const Row(
+                  children: [
+                    AppText('تنبيهات مهمة', color: AppColors.kGrayText),
+                  ],
                 ),
-                ListView.separated(
+              ),
+              SizedBox(
+                height: 240.h,
+                child: ListView.separated(
                   padding:  EdgeInsets.symmetric(horizontal: 16.w),
                     shrinkWrap: true,
                     // physics: const NeverScrollableScrollPhysics(),
@@ -72,9 +72,9 @@ class HomePageScreen extends StatelessWidget {
                       );
                     },
                     separatorBuilder: (context, index) => Divider(),
-                    itemCount: cubit.notificationList.length)
-              ],
-            ),
+                    itemCount: cubit.notificationList.length),
+              )
+            ],
           );
         },
       ),

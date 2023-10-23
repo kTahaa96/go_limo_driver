@@ -14,14 +14,14 @@ class QuestionRowItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Column(
-        children: [
-          InkWell(
-            onTap: () {
-              PopupHelper.showDialog(context: context, content: const StopCarDialog());
-            },
-            child: Row(
+    return InkWell(
+      onTap: () {
+        PopupHelper.gShowDialog(context: context, content: const StopCarDialog());
+      },
+      child: SizedBox(
+        child: Column(
+          children: [
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
@@ -56,14 +56,14 @@ class QuestionRowItem extends StatelessWidget {
                     )),
               ],
             ),
-          ),
-          Container(
-            width: double.infinity,
-            height: 2,
-            color: const Color(0xffC1C9D2),
-            margin: const EdgeInsets.symmetric(vertical: 16),
-          ),
-        ],
+            Container(
+              width: double.infinity,
+              height: 2,
+              color: const Color(0xffC1C9D2),
+              margin: const EdgeInsets.symmetric(vertical: 16),
+            ),
+          ],
+        ),
       ),
     );
   }

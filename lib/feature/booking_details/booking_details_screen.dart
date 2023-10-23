@@ -91,7 +91,7 @@ class _TripOrderState extends State<TripOrder> {
                                   )
                                 ],
                               ),
-                              BackIcon(),
+                              const BackIcon(),
                             ],
                           ),
                         )

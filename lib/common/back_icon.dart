@@ -11,10 +11,14 @@ class BackIcon extends StatelessWidget {
       onTap: () {
         Navigator.pop(context);
       },
-      child: Icon(
-        Icons.arrow_back_ios_new,
-        size: 16.w,
-        color: AppColors.kBlack,
+      child: Container(
+        width: 40,
+        height: 40,
+        child: Icon(
+          Icons.arrow_back_ios_new,
+          size: 16.w,
+          color: AppColors.kBlack,
+        ),
       ),
     );
   }

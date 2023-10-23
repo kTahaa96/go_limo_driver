@@ -31,13 +31,13 @@ class StopCarDialog extends StatelessWidget {
             ),
           ),
           30.sbH,
-          AppText(
+          const AppText(
             'هل السيارة متوقفة؟',
             size: 20,
             weight: FontWeight.w600,
           ),
           12.sbH,
-          AppText(
+          const AppText(
             'حرصاً علي السلامة يجب توقف السيارة قبل البدء في طلب المساعدة',
             size: 14,
             centerText: true,
@@ -65,9 +65,9 @@ class StopCarDialog extends StatelessWidget {
 
   Future<void> _showBottomSheet(BuildContext context) async {
     Navigator.pop(context);
-    Future.delayed(Duration(microseconds: 300), () {
+    Future.delayed(const Duration(microseconds: 300), () {
       BottomSheetHelper.gShowModalBottomSheet(
-        maxHeight: 330.h,
+        maxHeight: 350.h,
           context: context, content: const EnterConflictWithCustomerView());
     });
   }

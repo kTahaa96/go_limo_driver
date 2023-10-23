@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:golimo_driver/common/bottom_navigation_bar.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/home_page/cubit/home_lay_out_cubit.dart';
 import 'package:golimo_driver/feature/modules/driver_order/driver_orders.dart';
@@ -49,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       InkWell(
                         onTap: () {
-                          // cubit.updatePageIndex(newVal: 5);
+                          cubit.updatePageIndex(newVal: 5);
                         },
                         child: SvgPicture.asset(
                           'assets/svg_icons/doughnut_chart.svg',
@@ -63,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                       8.sbW,
                       InkWell(
                         onTap: () {
-                          // cubit.updatePageIndex(newVal: 4);
+                          cubit.updatePageIndex(newVal: 4);
                         },
                         child: SvgPicture.asset(
                           'assets/svg_icons/home_notificatoin.svg',
@@ -99,85 +100,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            bottomNavigationBar: BottomNavigationBar(
+            bottomNavigationBar: CustomBottomNavigationBar(
               currentIndex: cubit.currentIndex,
-              onTap: (int index) => cubit.updatePageIndex(newVal: index),
-              showSelectedLabels: true,
-              showUnselectedLabels: true,
-              selectedItemColor: AppColors.kPrimary,
-              enableFeedback: false,
-              unselectedItemColor: Colors.black,
-              selectedLabelStyle: const TextStyle(
-                height: 2,
-                color: Colors.black,
-                fontSize: 11,
-                fontWeight: FontWeight.w500,
-              ),
-              unselectedLabelStyle: const TextStyle(
-                height: 2,
-                color: Colors.black,
-                fontSize: 11,
-                fontWeight: FontWeight.w500,
-              ),
-              items: <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    'assets/svg_icons/home_inactive.svg',
-                    width: 24,
-                    height: 24,
-                  ),
-                  activeIcon: SvgPicture.asset(
-                    'assets/svg_icons/home_active.svg',
-                    width: 24,
-                    height: 24,
-                    color: AppColors.kPrimary,
-                  ),
-                  label: 'الرئيسية',
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    'assets/svg_icons/operations_inactive.svg',
-                    width: 24,
-                    height: 24,
-                  ),
-                  activeIcon: SvgPicture.asset(
-                    'assets/svg_icons/operations_active.svg',
-                    width: 24,
-                    height: 24,
-                    color: AppColors.kPrimary,
-                  ),
-                  label: 'اوامر التشغيل',
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    'assets/svg_icons/rewards_inactive.svg',
-                    width: 24,
-                    height: 24,
-                  ),
-                  activeIcon: SvgPicture.asset(
-                    'assets/svg_icons/rewards_active.svg',
-                    width: 24,
-                    height: 24,
-                    color: AppColors.kPrimary,
-                  ),
-                  label: 'الحوافز',
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    'assets/svg_icons/fuel_inactive.svg',
-                    width: 24,
-                    height: 24,
-                  ),
-                  activeIcon: SvgPicture.asset(
-                    'assets/svg_icons/fuel_active.svg',
-                    width: 24,
-                    height: 24,
-                    color: AppColors.kPrimary,
-                  ),
-                  label: 'الوقود',
-                ),
-
-              ],
+              onItemTap: (index) => cubit.updatePageIndex(newVal: index),
             ),
             body: screensList[cubit.currentIndex],
           );

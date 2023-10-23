@@ -80,11 +80,12 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               scaffoldBackgroundColor: AppColors.kBackground,
               fontFamily: "Alexandria",
-              appBarTheme: const AppBarTheme(
+              appBarTheme:  AppBarTheme(
                 titleTextStyle: TextStyle(
-                  color: AppColors.kWhite,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15.sp,
+                  fontFamily: 'Alexandria',
+                  color:AppColors.kBlack,
                 ),
                 color: AppColors.kPrimary,
                 elevation: 0,

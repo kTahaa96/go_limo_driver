@@ -23,19 +23,8 @@ class ConfirmFuelView extends StatefulWidget {
 class _ConfirmFuelViewState extends State<ConfirmFuelView> {
   File? _image;
   final picker = ImagePicker();
-
-  Future getImage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.camera);
-
-    setState(() {
-      if (pickedFile != null) {
-        _image = File(pickedFile.path);
-      }
-    });
-    showSheet(image: _image!);
-  }
-
   GlobalKey<FormState> formkey = GlobalKey();
+
 
   @override
   Widget build(BuildContext context) {
@@ -197,4 +186,17 @@ class _ConfirmFuelViewState extends State<ConfirmFuelView> {
           ],
         ));
   }
+
+
+  Future getImage() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      }
+    });
+    showSheet(image: _image!);
+  }
+
 }

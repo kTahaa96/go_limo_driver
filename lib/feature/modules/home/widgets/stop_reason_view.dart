@@ -27,7 +27,7 @@ class StopReasonsView extends StatelessWidget {
           child: Column(
             children: [
               CustomButton(
-                buttonText: 'اشارة اة زحمة',
+                buttonText: 'اشارة زحمة',
                 onBtnTap: () => onReasonSelect('اشارة اة زحمة'),
               ),
               16.sbH,

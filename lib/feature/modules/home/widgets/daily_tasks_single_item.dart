@@ -7,8 +7,8 @@ import 'package:golimo_driver/feature/booking_details/booking_details_screen.dar
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
 
-class DailyTaskHomePageRow extends StatelessWidget {
-  const DailyTaskHomePageRow({super.key});
+class DailyTaskHomePageItem extends StatelessWidget {
+  const DailyTaskHomePageItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class DailyTaskHomePageRow extends StatelessWidget {
             BoxShadow(
               color: AppColors.kBlack.withOpacity(0.1),
               blurRadius: 10.r,
-              offset: Offset(0, 2), // changes position of shadow
+              offset: const Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
@@ -49,7 +49,7 @@ class DailyTaskHomePageRow extends StatelessWidget {
                     ),
                     8.sbH,
                     AppText(
-                      DateTime.now().toDateFormat(format: 'hh:mm a'),
+                      DateTime.now().toDateFormat(format: 'hh:mm a',locale: "ar"),
                       size: 16.sp,
                       color: AppColors.kDarkGray,
                       weight: FontWeight.w700,

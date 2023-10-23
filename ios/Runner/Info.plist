@@ -47,8 +47,10 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
-	  <key>NSPhotoLibraryUsageDescription</key>
-        <string>Your usage description goes here</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Access to camera allows the user to upload profile image</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Access to image gallery allows the user to upload profile image</string>
 
 </dict>
 </plist>

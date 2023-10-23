@@ -20,8 +20,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 110.h,
-      padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 22.h),
+      padding: const EdgeInsetsDirectional.only(bottom: 26, start: 28 ,end: 28,top: 22),
       decoration: BoxDecoration(
         color: AppColors.kBackground,
         borderRadius: BorderRadius.circular(20),
@@ -29,7 +28,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           BoxShadow(
             color: AppColors.kBlack.withOpacity(0.1),
             blurRadius: 12.r,
-            offset: Offset(0, -2), // changes position of shadow
+            offset: const Offset(0, -2), // changes position of shadow
           ),
         ],
       ),
@@ -73,6 +72,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     return InkWell(
       onTap: () => widget.onItemTap(index),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           SvgPicture.asset(
             index == widget.currentIndex ? activeIconPath : iconPath,

@@ -34,7 +34,6 @@ class HomePageScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     AppText(
                       'اوامر شغل اليوم',
                       size: 14.sp,
@@ -44,9 +43,9 @@ class HomePageScreen extends StatelessWidget {
                     8.sbH,
                     Column(
                       children: [
-                        const DailyTaskHomePageRow(),
+                        const DailyTaskHomePageItem(),
                         12.sbH,
-                        const DailyTaskHomePageRow(),
+                        const DailyTaskHomePageItem(),
                       ],
                     ),
                   ],
@@ -54,8 +53,8 @@ class HomePageScreen extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(16.w),
-                child: const Row(
-                  children: [
+                child:  Row(
+                  children: const [
                     AppText('تنبيهات مهمة', color: AppColors.kGrayText),
                   ],
                 ),

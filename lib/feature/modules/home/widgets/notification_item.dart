@@ -24,7 +24,7 @@ class NotificationItem extends StatelessWidget {
           Row(
             children: [
               Container(
-                  padding: EdgeInsets.all(4),
+                  padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle, color: AppColors.kPrimary.withOpacity(0.3)),
                   child: buildImg(status: model.status)),
@@ -42,7 +42,7 @@ class NotificationItem extends StatelessWidget {
                   SizedBox(
                     width: model.status == 2 || model.status == 3 ? 180.w : 270.w,
                     child: AppText(
-                      '${model.desc}',
+                      model.desc,
                       size: 12.sp,
                       maxLines: 1,
                       weight: FontWeight.w400,

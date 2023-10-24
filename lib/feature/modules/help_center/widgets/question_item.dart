@@ -55,7 +55,7 @@ class QuestionRowItem extends StatelessWidget {
                       size: 20.w,
                     )),
               ],
-            ),
+            ),//todo divider
             Container(
               width: double.infinity,
               height: 2,

@@ -116,7 +116,7 @@ class RewardsScreen extends StatelessWidget {
                       ListView.separated(
                         padding: EdgeInsets.symmetric(horizontal: 19.w),
 
-                        separatorBuilder: (context, index) => Divider(thickness: 2,),
+                        separatorBuilder: (context, index) => const Divider(thickness: 2,),
                           itemCount: 12,
                           shrinkWrap: true,
                           // physics: const NeverScrollableScrollPhysics(),
@@ -125,7 +125,7 @@ class RewardsScreen extends StatelessWidget {
                           }),
                       ListView.separated(
                           padding: EdgeInsets.symmetric(horizontal: 19.w),
-                          separatorBuilder: (context, index) => Divider(thickness: 2,),
+                          separatorBuilder: (context, index) => const Divider(thickness: 2,),
                           itemCount: 12,
                           shrinkWrap: true,
                           // physics: const NeverScrollableScrollPhysics(),

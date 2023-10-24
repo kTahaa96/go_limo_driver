@@ -61,13 +61,13 @@ class DriverOrders extends StatelessWidget {
                             itemCount: 14,
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
-                              return const DailyTaskHomePageRow();
+                              return const DailyTaskHomePageItem();
                             }),
                         ListView.builder(
                             itemCount: 14,
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
-                              return const DailyTaskHomePageRow();
+                              return const DailyTaskHomePageItem();
                             })
                       ],
                     ),

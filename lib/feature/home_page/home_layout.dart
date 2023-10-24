@@ -5,12 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:golimo_driver/common/bottom_navigation_bar.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/home_page/cubit/home_lay_out_cubit.dart';
-import 'package:golimo_driver/feature/modules/driver_order/driver_orders.dart';
-import 'package:golimo_driver/feature/modules/fuel/fuel_screen.dart';
-import 'package:golimo_driver/feature/modules/help_center/help_center.dart';
-import 'package:golimo_driver/feature/modules/home/home_page_screen.dart';
-import 'package:golimo_driver/feature/modules/notificatiton_center/notification_center.dart';
-import 'package:golimo_driver/feature/modules/rewards/rewards.dart';
 import 'package:golimo_driver/helpers/di/di.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
@@ -22,14 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Widget> screensList = [
-    const HomePageScreen(),
-    const DriverOrders(),
-    const RewardsScreen(),
-    const FuelScreen(),
-    const NotificationCenter(),
-    const HelpCenter(),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +91,7 @@ class _HomePageState extends State<HomePage> {
               currentIndex: cubit.currentIndex,
               onItemTap: (index) => cubit.updatePageIndex(newVal: index),
             ),
-            body: screensList[cubit.currentIndex],
+            body: cubit.screensList[cubit.currentIndex],
           );
         },
       ),

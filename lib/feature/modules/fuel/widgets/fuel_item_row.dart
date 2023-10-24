@@ -23,7 +23,7 @@ class FuelItemRow extends StatelessWidget {
                 Container(
                   width: 28.w,
                   height: 28.h,
-                  padding: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(6),
                   decoration: BoxDecoration(
                       color: AppColors.kPrimary.withOpacity(0.5), shape: BoxShape.circle),
                   child: SvgPicture.asset(

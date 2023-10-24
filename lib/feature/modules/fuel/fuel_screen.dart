@@ -16,8 +16,7 @@ class FuelScreen extends StatelessWidget {
       floatingActionButton: Container(
         width: 150.w,
         height: 62.h,
-        margin: EdgeInsets.only(top: 530.h, right: 222.w),
-        // padding: EdgeInsets.all(16.w),
+
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: AppColors.kBlack,
@@ -49,7 +48,6 @@ class FuelScreen extends StatelessWidget {
             vertical: 40.h,
           ),
           shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
           itemCount: 5,
           itemBuilder: (context, index) => FuelItemRow(
                 index: index,

@@ -19,7 +19,7 @@ class RewardsSingleItem extends StatelessWidget {
             children: [
               SvgPicture.asset('assets/svg_icons/arrow_in.svg', width: 28.w, height: 28),
               8.sbW,
-              AppText('صرف حوافز'),
+              const AppText('صرف حوافز'),
             ],
           ),
           Column(

@@ -26,7 +26,7 @@ class _NotificationCenterState extends State<NotificationCenter> {
                 itemBuilder: (context, index) {
                   return NotificationItem(model: cubit.notificationList[index]);
                 },
-                separatorBuilder: (context, index) => Divider(),
+                separatorBuilder: (context, index) => const Divider(),
                 itemCount: cubit.notificationList.length);
           },
         ),

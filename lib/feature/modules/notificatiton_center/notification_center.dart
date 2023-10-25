@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:golimo_driver/feature/modules/home/widgets/notification_item.dart';
+import 'package:golimo_driver/feature/modules/notificatiton_center/widgets/notification_item.dart';
 import 'package:golimo_driver/feature/modules/notificatiton_center/cubit/notification_center_cubit.dart';
 import 'package:golimo_driver/helpers/di/di.dart';
 

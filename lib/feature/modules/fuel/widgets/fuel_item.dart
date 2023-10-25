@@ -5,10 +5,10 @@ import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
-class FuelItemRow extends StatelessWidget {
+class FuelItem extends StatelessWidget {
   final int index;
 
-  const FuelItemRow({super.key, required this.index});
+  const FuelItem({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {

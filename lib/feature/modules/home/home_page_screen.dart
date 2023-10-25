@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
+import 'package:golimo_driver/feature/modules/driver_order/widgets/driver_order_item.dart';
 import 'package:golimo_driver/feature/modules/home/cubit/home_cubit.dart';
-import 'package:golimo_driver/feature/modules/home/widgets/daily_tasks_single_item.dart';
-import 'package:golimo_driver/feature/modules/home/widgets/notification_item.dart';
+import 'package:golimo_driver/feature/modules/notificatiton_center/widgets/notification_item.dart';
 import 'package:golimo_driver/helpers/di/di.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
@@ -20,7 +19,9 @@ class HomePageScreen extends StatelessWidget {
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           final cubit = HomeCubit.of(context);
-          return Column(
+          return ListView(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             children: [
               Container(
                 width: double.infinity,
@@ -53,26 +54,22 @@ class HomePageScreen extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(16.w),
-                child:  Row(
-                  children: const [
+                child: const Row(
+                  children: [
                     AppText('تنبيهات مهمة', color: AppColors.kGrayText),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 240.h,
-                child: ListView.separated(
-                  padding:  EdgeInsets.symmetric(horizontal: 16.w),
-                    shrinkWrap: true,
-                    // physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return NotificationItem(
-                        model: cubit.notificationList[index],
-                      );
-                    },
-                    separatorBuilder: (context, index) => Divider(),
-                    itemCount: cubit.notificationList.length),
-              )
+              ListView.separated(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return NotificationItem(
+                      model: cubit.notificationList[index],
+                    );
+                  },
+                  separatorBuilder: (context, index) => const Divider(),
+                  itemCount: cubit.notificationList.length)
             ],
           );
         },

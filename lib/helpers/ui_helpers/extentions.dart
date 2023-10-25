@@ -30,8 +30,8 @@ extension DateHelpers on DateTime {
     return yesterday.day == day && yesterday.month == month && yesterday.year == year;
   }
 
-  String toDateFormat({String? format,String? locale}) {
-    final formatter = DateFormat(format ?? 'EE, d MMM hh:mm',locale);
+  String toDateFormat({String? format, String? locale}) {
+    final formatter = DateFormat(format ?? 'EE, d MMM hh:mm', locale ?? 'ar');
     return formatter.format(this);
   }
 }

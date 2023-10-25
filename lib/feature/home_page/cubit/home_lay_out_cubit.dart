@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 import '../../modules/driver_order/driver_orders.dart';
 import '../../modules/fuel/fuel_screen.dart';
@@ -26,10 +25,12 @@ class HomeLayOutCubit extends Cubit<HomeLayOutState> {
     const HelpCenter(),
   ];
   int currentIndex = 0;
+  Widget currentWidget = const HomePageScreen();
 
   void updatePageIndex({required int newVal}) {
     log('===> $newVal');
     currentIndex = newVal;
+    currentWidget = screensList[currentIndex];
 
     emit(UpdatePageIndexState());
   }

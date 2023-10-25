@@ -21,9 +21,11 @@ class CheckTripSettingView extends StatefulWidget {
 class _CheckTripSettingViewState extends State<CheckTripSettingView> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return ListView(
+      shrinkWrap: true,
+      // physics: const NeverScrollableScrollPhysics(),
+      // crossAxisAlignment: CrossAxisAlignment.start,
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         AppText(
           'قم بتأكيد التالي قبل بداية الرحلة',
@@ -37,22 +39,25 @@ class _CheckTripSettingViewState extends State<CheckTripSettingView> {
           weight: FontWeight.w400,
           color: AppColors.kLightGray,
         ),
-        ListView.separated(
-          separatorBuilder: (context, index) => Divider(thickness: 1),
-          padding: EdgeInsets.symmetric(vertical: 24.h),
-          itemCount: widget.settingList.length,
-          shrinkWrap: true,
-          itemBuilder: (context, index) => TripSettingItem(
-            label: widget.settingList[index].label,
-            onClick: () {
-              setState(() {
-                widget.settingList[index].isSelected = !widget.settingList[index].isSelected;
-              });
-            },
-            value: widget.settingList[index].isSelected,
+        SizedBox(
+          height: MediaQuery.of(context).size.height*0.6,
+          child: ListView.separated(
+            separatorBuilder: (context, index) => Divider(thickness: 1),
+            padding: EdgeInsets.symmetric(vertical: 24.h),
+            itemCount: widget.settingList.length,
+            shrinkWrap: true,
+            // physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) => TripSettingItem(
+              label: widget.settingList[index].label,
+              onClick: () {
+                setState(() {
+                  widget.settingList[index].isSelected = !widget.settingList[index].isSelected;
+                });
+              },
+              value: widget.settingList[index].isSelected,
+            ),
           ),
         ),
-        100.sbH,
         CustomButton(
             buttonText: 'تأكيد بداية الرحلة',
             onBtnTap: () {

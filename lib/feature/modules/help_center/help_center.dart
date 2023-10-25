@@ -17,7 +17,8 @@ class _HelpCenterState extends State<HelpCenter> {
         padding: EdgeInsets.all(16.w),
         child: Column(
           children: [
-            ListView.builder(
+            ListView.separated(
+                separatorBuilder: (context, index) => const Divider(thickness: 1),
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: 4,

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:golimo_driver/common/app_bar_row.dart';
 import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/modules/rewards/widgets/rewards_single_item.dart';
@@ -27,7 +25,6 @@ class RewardsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -47,7 +44,8 @@ class RewardsScreen extends StatelessWidget {
                           color: AppColors.kWhite,
                         ),
                       ],
-                    ),  Column(
+                    ),
+                    Column(
                       children: [
                         AppText(
                           'إجمالي الحوافز',
@@ -56,7 +54,6 @@ class RewardsScreen extends StatelessWidget {
                           color: AppColors.kWhite,
                         ),
                         6.sbH,
-
                         AppText(
                           'EGP 7,200',
                           size: 20.sp,
@@ -112,11 +109,11 @@ class RewardsScreen extends StatelessWidget {
                   child: TabBarView(
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
-
                       ListView.separated(
-                        padding: EdgeInsets.symmetric(horizontal: 19.w),
-
-                        separatorBuilder: (context, index) => const Divider(thickness: 2,),
+                          padding: EdgeInsets.symmetric(horizontal: 19.w),
+                          separatorBuilder: (context, index) => const Divider(
+                                thickness: 2,
+                              ),
                           itemCount: 12,
                           shrinkWrap: true,
                           // physics: const NeverScrollableScrollPhysics(),
@@ -125,7 +122,9 @@ class RewardsScreen extends StatelessWidget {
                           }),
                       ListView.separated(
                           padding: EdgeInsets.symmetric(horizontal: 19.w),
-                          separatorBuilder: (context, index) => const Divider(thickness: 2,),
+                          separatorBuilder: (context, index) => const Divider(
+                                thickness: 2,
+                              ),
                           itemCount: 12,
                           shrinkWrap: true,
                           // physics: const NeverScrollableScrollPhysics(),

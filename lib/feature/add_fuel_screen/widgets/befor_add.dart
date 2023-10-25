@@ -8,6 +8,7 @@ import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/helpers/ui_helpers/bottom_sheet_helper.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
+import 'package:golimo_driver/helpers/ui_helpers/image_picker_helper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class BeforeAddFuelView extends StatefulWidget {
@@ -72,7 +73,13 @@ class _BeforeAddFuelViewState extends State<BeforeAddFuelView> {
                 ),
               )
             : InkWell(
-                onTap: getImage,
+                onTap: () {
+                  ImagePickerHelper.openCamera(onGet: (image) {
+                    setState(() {
+                      _image = image;
+                    });
+                  });
+                },
                 child: Container(
                   width: 388.w,
                   height: 276.h,
@@ -118,7 +125,6 @@ class _BeforeAddFuelViewState extends State<BeforeAddFuelView> {
                               color: AppColors.kPrimary,
                               width: 1,
                             )),
-
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
                             borderSide: const BorderSide(
@@ -159,12 +165,13 @@ class _BeforeAddFuelViewState extends State<BeforeAddFuelView> {
         ),
         47.sbH,
         CustomButton(
-            buttonText: 'تأكيد عداد الكيلومترات',
-            onBtnTap: () {
-              formKey.currentState!.save();
-              if (!formKey.currentState!.validate()) return;
-              widget.onTapConfirm();
-            },)
+          buttonText: 'تأكيد عداد الكيلومترات',
+          onBtnTap: () {
+            formKey.currentState!.save();
+            if (!formKey.currentState!.validate()) return;
+            widget.onTapConfirm();
+          },
+        )
       ],
     );
   }
@@ -191,7 +198,11 @@ class _BeforeAddFuelViewState extends State<BeforeAddFuelView> {
                     onTap: () {
                       Navigator.pop(context);
                       _image = null;
-                      getImage();
+                      ImagePickerHelper.openCamera(onGet: (image) {
+                        setState(() {
+                          _image = image;
+                        });
+                      });
                     },
                     child: const AppText(
                       'إعادة الصورة',
@@ -209,15 +220,5 @@ class _BeforeAddFuelViewState extends State<BeforeAddFuelView> {
             ),
           ],
         ));
-  }
-
-  Future getImage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.camera);
-
-    setState(() {
-      if (pickedFile != null) {
-        _image = File(pickedFile.path);
-      }
-    });
   }
 }

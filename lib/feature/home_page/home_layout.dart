@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
               currentIndex: cubit.currentIndex,
               onItemTap: (index) => cubit.updatePageIndex(newVal: index),
             ),
-            body: cubit.screensList[cubit.currentIndex],
+            body: cubit.currentWidget,
           );
         },
       ),

@@ -17,7 +17,7 @@ class NotificationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric( vertical: 8.h),
+      padding: EdgeInsets.symmetric(vertical: 8.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -26,7 +26,9 @@ class NotificationItem extends StatelessWidget {
               Container(
                   padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle, color: AppColors.kPrimary.withOpacity(0.3)),
+                    shape: BoxShape.circle,
+                    color: Color(0xffDC9CEC).withOpacity(0.5),
+                  ),
                   child: buildImg(status: model.status)),
               8.sbW,
               Column(

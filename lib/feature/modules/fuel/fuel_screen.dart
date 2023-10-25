@@ -3,9 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/add_fuel_screen/add_fuel_screen.dart';
-import 'package:golimo_driver/feature/modules/fuel/widgets/fuel_item_row.dart';
+import 'package:golimo_driver/feature/modules/fuel/widgets/fuel_item.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
-
 
 class FuelScreen extends StatelessWidget {
   const FuelScreen({super.key});
@@ -16,7 +15,6 @@ class FuelScreen extends StatelessWidget {
       floatingActionButton: Container(
         width: 150.w,
         height: 62.h,
-
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: AppColors.kBlack,
@@ -43,13 +41,10 @@ class FuelScreen extends StatelessWidget {
         ),
       ),
       body: ListView.builder(
-          padding: EdgeInsets.symmetric(
-            horizontal: 16.w,
-            vertical: 40.h,
-          ),
+          padding: EdgeInsets.all(16.w),
           shrinkWrap: true,
           itemCount: 5,
-          itemBuilder: (context, index) => FuelItemRow(
+          itemBuilder: (context, index) => FuelItem(
                 index: index,
               )),
     );

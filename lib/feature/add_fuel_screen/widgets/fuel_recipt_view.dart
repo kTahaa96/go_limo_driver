@@ -8,6 +8,7 @@ import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/helpers/ui_helpers/bottom_sheet_helper.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
+import 'package:golimo_driver/helpers/ui_helpers/image_picker_helper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class FinalFuelView extends StatefulWidget {
@@ -72,7 +73,13 @@ class _FinalFuelViewState extends State<FinalFuelView> {
                 ),
               )
             : InkWell(
-                onTap: getImage,
+                onTap: () {
+                  ImagePickerHelper.openCamera(onGet: (image) {
+                    setState(() {
+                      _image = image;
+                    });
+                  });
+                },
                 child: Container(
                   width: 388.w,
                   height: 276.h,
@@ -223,6 +230,7 @@ class _FinalFuelViewState extends State<FinalFuelView> {
       ],
     );
   }
+
   void showSheet({required File image}) {
     BottomSheetHelper.gShowModalBottomSheet(
         context: context,
@@ -245,7 +253,11 @@ class _FinalFuelViewState extends State<FinalFuelView> {
                     onTap: () {
                       Navigator.pop(context);
                       _image = null;
-                      getImage();
+                      ImagePickerHelper.openCamera(onGet: (image) {
+                        setState(() {
+                          _image = image;
+                        });
+                      });
                     },
                     child: const AppText(
                       'إعادة الصورة',
@@ -263,15 +275,5 @@ class _FinalFuelViewState extends State<FinalFuelView> {
             ),
           ],
         ));
-  }
-
-  Future getImage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.camera);
-
-    setState(() {
-      if (pickedFile != null) {
-        _image = File(pickedFile.path);
-      }
-    });
   }
 }

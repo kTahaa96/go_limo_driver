@@ -40,7 +40,6 @@ class StopReasonsView extends StatelessWidget {
               CustomButton(
                 buttonText: 'سبب اخر',
                 onBtnTap: () => onReasonSelect('سبب اخر'),
-
                 borderColor: AppColors.kBlack,
                 color: AppColors.kWhite,
                 textColor: AppColors.kBlack,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
+import 'package:golimo_driver/helpers/navigator/named-navigator_impl.dart';
 
 class BackIcon extends StatelessWidget {
   const BackIcon({super.key});
@@ -11,14 +11,13 @@ class BackIcon extends StatelessWidget {
       onTap: () {
         Navigator.pop(context);
       },
-      child: Container(
-        width: 40,
-        height: 40,
-        child: Icon(
-          Icons.arrow_back_ios_new,
-          size: 16.w,
+      child: IconButton(
+        icon: const Icon(
+          Icons.arrow_forward_ios,
           color: AppColors.kBlack,
+          size: 16,
         ),
+        onPressed: () => NamedNavigatorImpl.pop(),
       ),
     );
   }

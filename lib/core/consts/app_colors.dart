@@ -17,10 +17,23 @@ class AppColors {
   static const Color kGrayText = Color(0xff7C7C7C);
   static const Color kDarkGreyText = Color(0xff535353);
   static const Color kBottomNavColor = Color(0xffFEFBFF);
+ // ================================================================
+
+  static const kDarkModePrimaryBackground = Color(0xff535178);
+  static const kDarkModePrimary = Color(0xff535178);
+  static const kDarkModeBackground = Color(0xff604c78);
+  static const kDarkModeWhite = Color(0xffFFFFFF);
+  static const kDarkModeBlack = Color(0xff000000);
+  static const kDarkModeIndicatorColor = Color(0xff2a2a2a);
+  static const kDarkModeSplashBgColor = Color(0xff19191A);
+  static const kDarkModeRed = Color(0xffE30613);
+  static const kDarkModeOrange = Color(0xffFA6400);
+  static const kDarkModeGreen = Color(0xff1EB10D);
+  static const kDarkModeGray = Color(0xff777777);
+  static const kDarkModeLightGray = Color(0xffC1C9D2);
+  static const kDarkModeDarkGray = Color(0xff7E7E7E);
+  static const kDarkModeGrayText = Color(0xff7C7C7C);
+  static const kDarkModeDarkGreyText = Color(0xff535353);
+  static const kDarkModeBottomNavColor = Color(0xffFEFBFF);
 }
 
-extension GetColor on Color {
-  static Color getColor({required Color color}) {
-    return color;
-  }
-}

@@ -6,6 +6,7 @@ import 'package:golimo_driver/common/bottom_navigation_bar.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/home_page/cubit/home_lay_out_cubit.dart';
 import 'package:golimo_driver/helpers/di/di.dart';
+import 'package:golimo_driver/helpers/theme/theme_cubit.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
 class HomePage extends StatefulWidget {
@@ -63,6 +64,14 @@ class _HomePageState extends State<HomePage> {
                               : AppColors.kBlack,
                         ),
                       ),
+                      8.sbW,
+                      //
+                      // InkWell(
+                      //     onTap: (){
+                      //       final cubit = ThemeCubit.of(context);
+                      //       cubit.toggleTheme();
+                      //     },
+                      //     child: Icon(Icons.dark_mode))
                     ],
                   ),
                 ),

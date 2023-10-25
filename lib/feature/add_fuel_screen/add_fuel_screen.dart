@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:golimo_driver/common/back_icon.dart';
 import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/add_fuel_screen/widgets/after_add_fuel.dart';
@@ -35,38 +36,11 @@ class _AddFullScreenState extends State<AddFullScreen> {
             'assets/svg_icons/driver_icon.svg',
           ),
         ),
-        title: AppText('الوقود' , ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              children: [
-                InkWell(
-                  onTap: () {
-                    // cubit.updatePageIndex(newVal: 5);
-                  },
-                  child: SvgPicture.asset(
-                    'assets/svg_icons/doughnut_chart.svg',
-                    width: 24.w,
-                    height: 24.h,
-                    color: AppColors.kBlack,
-                  ),
-                ),
-                8.sbW,
-                InkWell(
-                  onTap: () {
-                    // cubit.updatePageIndex(newVal: 4);
-                  },
-                  child: SvgPicture.asset(
-                    'assets/svg_icons/home_notificatoin.svg',
-                    width: 24.w,
-                    height: 24.h,
-                    color: AppColors.kBlack,
-                  ),
-                ),
-              ],
-            ),
-          ),
+        title: const AppText(
+          'الوقود',
+        ),
+        actions: const [
+          BackIcon(),
         ],
       ),
       body: SingleChildScrollView(
@@ -74,7 +48,6 @@ class _AddFullScreenState extends State<AddFullScreen> {
         child: Column(
           children: [
             24.sbH,
-
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

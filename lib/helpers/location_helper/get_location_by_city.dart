@@ -54,6 +54,8 @@ class _GetLocationByCityState extends State<GetLocationByCity> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+
         title: AppText("${widget.isPickUp ? "Pick Up" : "Drop Off"} Information"),
       ),
       body: BlocProvider(

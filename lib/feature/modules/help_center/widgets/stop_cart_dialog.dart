@@ -10,6 +10,7 @@ class StopCarDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        24.sbH,
 
         const AppText(
           'هل السيارة متوقفة؟',
@@ -24,6 +25,8 @@ class StopCarDialog extends StatelessWidget {
           weight: FontWeight.w500,
           color: AppColors.kGrayText,
         ),
+        24.sbH,
+
       ],
     );
   }

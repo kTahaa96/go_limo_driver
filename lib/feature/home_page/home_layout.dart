@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
           final cubit = HomeLayOutCubit.of(context);
           return Scaffold(
             appBar: AppBar(
+              elevation: 0,
               backgroundColor: cubit.currentIndex == 0 || cubit.currentIndex == 2
                   ? AppColors.kPrimaryBackground
                   : AppColors.kBackground,

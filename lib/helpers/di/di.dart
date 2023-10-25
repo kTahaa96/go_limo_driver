@@ -46,4 +46,5 @@ Future init() async {
   di.registerFactory<HomeCubit>(() => HomeCubit());
   di.registerFactory<NotificationCenterCubit>(() => NotificationCenterCubit());
   di.registerFactory<BookingDetailsCubit>(() => BookingDetailsCubit());
+  di.registerFactory<ThemeCubit>(() => ThemeCubit());
 }

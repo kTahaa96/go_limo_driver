@@ -34,6 +34,7 @@ class AppText extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           color: color ?? AppColors.kBlack,
           fontSize: size ?? 14,
+          fontFamily: 'Alexandria',
           fontWeight: weight ?? FontWeight.w400,
           decoration: underLintText == true ? TextDecoration.underline : null),
     );

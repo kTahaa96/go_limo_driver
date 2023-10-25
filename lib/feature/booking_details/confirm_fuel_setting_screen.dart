@@ -40,6 +40,7 @@ class _ConfirmFuelSettingState extends State<ConfirmFuelSetting> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: AppColors.kBackground,
         leading: Row(
           children: [

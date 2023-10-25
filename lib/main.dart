@@ -15,6 +15,7 @@ import 'package:golimo_driver/helpers/navigator/named-navigator_routes.dart';
 import 'package:golimo_driver/helpers/network/cubit/cubit.dart';
 import 'package:golimo_driver/helpers/network/cubit/state.dart';
 import 'package:golimo_driver/helpers/network/extensions/http_overrides.dart';
+import 'package:golimo_driver/helpers/theme/theme_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +35,10 @@ class MyApp extends StatelessWidget {
         BlocProvider<NetworkCubit>(
           create: (BuildContext context) => di<NetworkCubit>(),
         ),
-        BlocProvider(create: (context) => di<SplashCubit>()..switchAnimation()),
+        BlocProvider(create: (context) =>
+        di<SplashCubit>()
+          ..switchAnimation()),
+        BlocProvider(create: (context) => di<ThemeCubit>()),
       ],
       child: BlocListener<NetworkCubit, NetworkStates>(
         listenWhen: (previous, current) {
@@ -62,37 +66,28 @@ class MyApp extends StatelessWidget {
           designSize: const Size(411, 843),
           minTextAdapt: true,
           splitScreenMode: false,
-          builder: (_, child) => MaterialApp(
-            onGenerateRoute: NamedNavigatorImpl.onGenerateRoute,
-            navigatorKey: NamedNavigatorImpl.navigatorState,
-            debugShowCheckedModeBanner: false,
-            localizationsDelegates: const [
-              GlobalCupertinoLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-            ],
-            supportedLocales: const [
-              Locale("ar"),
-            ],
-            title: 'Go Limo App',
-            theme: ThemeData(
-              scaffoldBackgroundColor: AppColors.kBackground,
-              fontFamily: "Alexandria",
-              appBarTheme:  AppBarTheme(
-                titleTextStyle: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15.sp,
-                  fontFamily: 'Alexandria',
-                  color:AppColors.kBlack,
-                ),
-                color: AppColors.kPrimary,
-                elevation: 0,
+          builder: (_, child) =>
+              BlocBuilder<ThemeCubit, ThemeData>(
+                builder: (context, state) {
+                  return MaterialApp(
+                    onGenerateRoute: NamedNavigatorImpl.onGenerateRoute,
+                    navigatorKey: NamedNavigatorImpl.navigatorState,
+                    debugShowCheckedModeBanner: false,
+                    localizationsDelegates: const [
+                      GlobalCupertinoLocalizations.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                    ],
+                    supportedLocales: const [
+                      Locale("ar"),
+                    ],
+                    title: 'Go Limo App',
+                    theme: state,
+                    home: const HomePage(),
+                    // home: const SplashScreen(),
+                  );
+                },
               ),
-              primaryColor: AppColors.kPrimary,
-            ),
-            home: const HomePage(),
-            // home: const SplashScreen(),
-          ),
         ),
       ),
     );

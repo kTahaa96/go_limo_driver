@@ -20,7 +20,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsetsDirectional.only(bottom: 26, start: 28 ,end: 28,top: 22),
+      padding: const EdgeInsetsDirectional.only(bottom: 26, start: 28, end: 28, top: 22),
       decoration: BoxDecoration(
         color: AppColors.kBackground,
         borderRadius: BorderRadius.circular(20),

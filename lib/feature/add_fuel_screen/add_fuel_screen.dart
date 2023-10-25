@@ -26,6 +26,7 @@ class _AddFullScreenState extends State<AddFullScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.kBackground,
+        elevation: 0,
         leading: Container(
           width: 30.w,
           height: 30.h,

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:golimo_driver/core/models/driver_order_response/trips_response.dart';
 import 'package:golimo_driver/core/models/userr_response/login_response.dart';
 import 'package:golimo_driver/helpers/network/remote/api_endpoints.dart';
 import 'package:golimo_driver/helpers/network/repository.dart';
@@ -35,17 +36,29 @@ class RepoImpl extends Repository {
   }
 
   @override
-  Future<Either<dynamic, LoginResponse>> login({
+  Future<Either<dynamic, DriverLoginResponse>> login({
     required String phone,
     required String password,
   }) async {
-    return _responseHandling<LoginResponse>(
+    return _responseHandling<DriverLoginResponse>(
       onSuccess: () async {
         final f = await dioHelper.post(
           EndPoints.login,
           data: FormData.fromMap({'phone': '+2$phone', 'password': password}),
         );
-        return LoginResponse.fromJson(f.data);
+        return DriverLoginResponse.fromJson(f.data);
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, DriverTripsResponse>> getDriverOrders({required bool isPrevious}) {
+    return _responseHandling<DriverTripsResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.get(
+          isPrevious ? EndPoints.previousBooking : EndPoints.upcomingBooking,
+        );
+        return DriverTripsResponse.fromJson(f.data);
       },
     );
   }

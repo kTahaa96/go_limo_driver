@@ -35,8 +35,9 @@ class _LoginScreenState extends State<LoginScreen> {
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is SuccessLoginState) {
-            NamedNavigatorImpl.push(Routes.homePage,clean: true );
-          } else if (state is ErrorLoginState) {
+            NamedNavigatorImpl.push(Routes.homePage, clean: true);
+          }
+          if (state is ErrorLoginState) {
             PopUpHelper.showSnakeBar(message: state.message);
           }
         },

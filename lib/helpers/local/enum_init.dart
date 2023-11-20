@@ -11,5 +11,6 @@ class CachingKey extends Enum<String> {
   static const String userData = 'userData';
   static const String isFirstInstall = 'isFirstInstall';
   static const String verified = 'verified';
+  static const String isLogged = 'isLogged';
 
 }

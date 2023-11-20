@@ -20,6 +20,9 @@ class SplashScreen extends StatelessWidget {
           if (state is UnAuthenticatedState) {
             NamedNavigatorImpl.push(Routes.login, clean: true);
           }
+          if (state is AuthenticatedState) {
+            NamedNavigatorImpl.push(Routes.homePage, clean: true);
+          }
         },
         builder: (context, state) {
           return Stack(

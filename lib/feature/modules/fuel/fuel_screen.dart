@@ -44,9 +44,7 @@ class FuelScreen extends StatelessWidget {
           padding: EdgeInsets.all(16.w),
           shrinkWrap: true,
           itemCount: 5,
-          itemBuilder: (context, index) => FuelItem(
-                index: index,
-              )),
+          itemBuilder: (context, index) => FuelItem(index: index)),
     );
   }
 }

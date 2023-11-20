@@ -16,15 +16,12 @@ class OrdersList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConditionalBuilder(
       condition: list.isEmpty,
-      builder: (context) => Padding(
-        padding: EdgeInsets.only(top: 270.h),
-        child: EmptyView(
-          text: 'لا توجد اوامر شغل حتي الان',
-          color: AppColors.kDarkGreyText,
-          onRefresh: () {
-            onRefresh?.call();
-          },
-        ),
+      builder: (context) => EmptyView(
+        text: 'لا توجد اوامر شغل حتي الان',
+        color: AppColors.kDarkGreyText,
+        onRefresh: () {
+          onRefresh?.call();
+        },
       ),
       fallback: (context) => ListView.builder(
         itemCount: list.length,

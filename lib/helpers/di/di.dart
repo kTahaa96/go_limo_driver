@@ -19,6 +19,8 @@ import 'package:golimo_driver/helpers/theme/theme_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ua_client_hints/ua_client_hints.dart';
 
+import '../../feature/modules/fuel/cubit/fuel_cubit.dart';
+
 GetIt di = GetIt.I;
 
 Future init() async {
@@ -43,6 +45,7 @@ Future init() async {
   di.registerFactory<SplashCubit>(() => SplashCubit());
   di.registerFactory<LoginCubit>(() => LoginCubit(repository: di<Repository>()));
   di.registerFactory<DriverOrdersCubit>(() => DriverOrdersCubit(repository: di<Repository>()));
+  di.registerFactory<FuelCubit>(() => FuelCubit(repository: di<Repository>()));
   // di.registerFactory<LocationCubit>(() => LocationCubit(repository: di<Repository>()));
   di.registerFactory<HomeLayOutCubit>(() => HomeLayOutCubit());
   di.registerFactory<HomeCubit>(() => HomeCubit());

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:golimo_driver/core/models/driver_order_response/trips_response.dart';
+import 'package:golimo_driver/core/models/fuel/get_fuel_histor_response.dart';
 import 'package:golimo_driver/core/models/userr_response/login_response.dart';
 import 'package:golimo_driver/helpers/network/remote/api_endpoints.dart';
 import 'package:golimo_driver/helpers/network/repository.dart';
@@ -59,6 +60,16 @@ class RepoImpl extends Repository {
           isPrevious ? EndPoints.previousBooking : EndPoints.upcomingBooking,
         );
         return DriverTripsResponse.fromJson(f.data);
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, FuelHistoryResponse>> getFuelHistory() {
+    return _responseHandling<FuelHistoryResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.get(EndPoints.getFuelHistory);
+        return FuelHistoryResponse.fromJson(f.data);
       },
     );
   }

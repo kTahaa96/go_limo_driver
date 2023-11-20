@@ -6,6 +6,7 @@ class EndPoints {
   static const String login = 'auth/login';
   static const String upcomingBooking = 'trips/upcoming';
   static const String previousBooking = 'trips/previous';
+  static const String getFuelHistory = 'fuel';
 
 
   static bool get isProduction => dotenv.env['ENV_TYPE'] == 'production';

@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:golimo_driver/common/alert_message.dart';
 import 'package:golimo_driver/core/consts/strings.dart';
 import 'package:golimo_driver/feature/modules/driver_order/cubit/dirver_orders_cubit.dart';
+import 'package:golimo_driver/feature/modules/fuel/cubit/fuel_cubit.dart';
 import 'package:golimo_driver/feature/splash/cubit/splash_cubit.dart';
 import 'package:golimo_driver/feature/splash/splash_screen.dart';
 import 'package:golimo_driver/helpers/di/di.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di<SplashCubit>()..switchAnimation()),
         BlocProvider(create: (context) => di<ThemeCubit>()),
         BlocProvider(create: (context) => di<DriverOrdersCubit>()..getTripsOrder(false)),
+        BlocProvider(create: (context) => di<FuelCubit>()..getFuelHistory()),
       ],
       child: BlocListener<NetworkCubit, NetworkStates>(
         listenWhen: (previous, current) {

@@ -11,7 +11,7 @@ class UserData {
 
   factory UserData.fromJson(Map<String, dynamic> json) => UserData(
         token: json["token"],
-        passenger: LoggedUserDetails.fromJson(json["user"]),
+        passenger: LoggedUserDetails.fromJson(json["driver"]),
       );
 
   Map<String, dynamic> toJson() => {

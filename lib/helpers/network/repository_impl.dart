@@ -36,15 +36,14 @@ class RepoImpl extends Repository {
 
   @override
   Future<Either<dynamic, LoginResponse>> login({
-    required String userName,
+    required String phone,
     required String password,
   }) async {
     return _responseHandling<LoginResponse>(
       onSuccess: () async {
         final f = await dioHelper.post(
           EndPoints.login,
-          data: FormData.fromMap(
-              {'username': userName, 'password': password, 'device_token': "device token"}),
+          data: FormData.fromMap({'phone': '+2$phone', 'password': password}),
         );
         return LoginResponse.fromJson(f.data);
       },

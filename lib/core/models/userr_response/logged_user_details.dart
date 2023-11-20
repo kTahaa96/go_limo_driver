@@ -10,7 +10,7 @@ class LoggedUserDetails {
   String fullName;
 
   factory LoggedUserDetails.fromJson(Map<String, dynamic> json) => LoggedUserDetails(
-        email: json["email"],
+        email: json["email"] ?? '',
         mobile: json["mobile"] ?? "",
         fullName: json["full_name"],
       );

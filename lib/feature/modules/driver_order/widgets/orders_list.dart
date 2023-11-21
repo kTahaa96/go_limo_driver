@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:golimo_driver/common/error_widget.dart.dart';
 import 'package:golimo_driver/common/loader/app_loader.dart';
+import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/modules/driver_order/cubit/dirver_orders_cubit.dart';
 import 'package:golimo_driver/feature/modules/driver_order/widgets/driver_order_item.dart';
 
@@ -24,11 +25,21 @@ class PreviousOrdersList extends StatelessWidget {
             },
           ),
           loadingBuilder: (context) => const AppLoader(),
-          fallback: (context) => ListView.builder(
-            itemCount: cubit.previousTrips.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index) =>
-                DailyTaskHomePageItem(model: cubit.previousTrips[index]),
+          fallback: (context) => RefreshIndicator(
+            color: AppColors.kBlack,
+            triggerMode:RefreshIndicatorTriggerMode.onEdge,
+            backgroundColor: AppColors.kWhite,
+            displacement: 100.0,
+            edgeOffset: 5,
+            onRefresh: () async {
+              cubit.getPreviousTripsOrder();
+            },
+            child: ListView.builder(
+              itemCount: cubit.previousTrips.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) =>
+                  DailyTaskHomePageItem(model: cubit.previousTrips[index]),
+            ),
           ),
         );
       },

@@ -59,12 +59,22 @@ class FuelScreen extends StatelessWidget {
                   cubit.getFuelHistory();
                 },
               ),
-              fallback: (context) => ListView.builder(
-                  padding: EdgeInsets.all(16.w),
-                  shrinkWrap: true,
-                  itemCount: cubit.fuelHistoryResponse!.data.length,
-                  itemBuilder: (context, index) =>
-                      FuelItem(model: cubit.fuelHistoryResponse!.data[index])),
+              fallback: (context) => RefreshIndicator(
+                color: AppColors.kBlack,
+                triggerMode:RefreshIndicatorTriggerMode.onEdge,
+                backgroundColor: AppColors.kWhite,
+                displacement: 100.0,
+                edgeOffset: 5,
+                onRefresh: () async {
+                  cubit.getFuelHistory();
+                },
+                child: ListView.builder(
+                    padding: EdgeInsets.all(16.w),
+                    shrinkWrap: true,
+                    itemCount: cubit.fuelHistoryResponse!.data.length,
+                    itemBuilder: (context, index) =>
+                        FuelItem(model: cubit.fuelHistoryResponse!.data[index])),
+              ),
             );
           },
         ),

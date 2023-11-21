@@ -2,8 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:golimo_driver/helpers/local/user_preferences/user_preferences_helper.dart';
 
-import '../../modules/driver_order/driver_orders.dart';
+import '../../../core/models/userr_response/user_data.dart';
+import '../../modules/driver_order/driver_orders_screen.dart';
 import '../../modules/fuel/fuel_screen.dart';
 import '../../modules/help_center/help_center.dart';
 import '../../modules/home/home_page_screen.dart';
@@ -26,6 +28,16 @@ class HomeLayOutCubit extends Cubit<HomeLayOutState> {
   ];
   int currentIndex = 0;
   Widget currentWidget = const HomePageScreen();
+  UserData? user;
+
+  void getHomeData() {
+    emit(LoadingHomeDataState());
+    user = UserPreferencesHelper().getUserPreference();
+    log('${user!.driver.fullName}');
+    log('${user!.driver.mobile}');
+    log('${user!.driver.id}');
+    emit(SuccessHomeDataState());
+  }
 
   void updatePageIndex({required int newVal}) {
     log('===> $newVal');

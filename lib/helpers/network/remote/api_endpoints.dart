@@ -4,17 +4,10 @@ class EndPoints {
   /// Auth
   ///
   static const String login = 'auth/login';
-  static const String addPassenger = 'passenger/create';
-  static const String sendSms = 'verify/resend-notification';
-  static const String verifyCode = 'verify/mobile';
-  static const String filterPassenger = 'passenger/filter';
-  static const String filterDriver = 'driver/filter';
-  static const String getAirportsByCity = 'trip-info/airports';
-  static const String getCities = 'trip-info/cities';
-  static const String getDropOffCities = 'trip-info/cities?is_travel=1';
-  static const String getCityPolygons = 'trip-info/city-polygons';
-  static const String getCityPackages = 'trip-info/packages-city-ride-rental';
-  static const String getPaymentOptions = 'payment/options';
+  static const String upcomingBooking = 'trips/upcoming';
+  static const String previousBooking = 'trips/previous';
+  static const String getFuelHistory = 'fuel';
+
 
   static bool get isProduction => dotenv.env['ENV_TYPE'] == 'production';
 

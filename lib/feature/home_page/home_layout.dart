@@ -6,7 +6,6 @@ import 'package:golimo_driver/common/bottom_navigation_bar.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/home_page/cubit/home_lay_out_cubit.dart';
 import 'package:golimo_driver/helpers/di/di.dart';
-import 'package:golimo_driver/helpers/theme/theme_cubit.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,12 +16,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => di<HomeLayOutCubit>(),
+      create: (context) => di<HomeLayOutCubit>()..getHomeData(),
       child: BlocBuilder<HomeLayOutCubit, HomeLayOutState>(
         builder: (context, state) {
           final cubit = HomeLayOutCubit.of(context);
@@ -65,13 +62,6 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       8.sbW,
-                      //
-                      // InkWell(
-                      //     onTap: (){
-                      //       final cubit = ThemeCubit.of(context);
-                      //       cubit.toggleTheme();
-                      //     },
-                      //     child: Icon(Icons.dark_mode))
                     ],
                   ),
                 ),
@@ -86,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               title: Text(
-                setAppBarTitle(cubit.currentIndex),
+                setAppBarTitle(cubit.currentIndex, name: cubit.user!.driver.fullName ?? 'Karim '),
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 15.sp,
@@ -108,7 +98,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  String setAppBarTitle(int index) {
+  String setAppBarTitle(int index, {required String name}) {
     if (index == 1) {
       return 'أوامر الشغل';
     } else if (index == 2) {
@@ -120,6 +110,6 @@ class _HomePageState extends State<HomePage> {
     } else if (index == 5) {
       return 'مركز المساعدة';
     }
-    return 'اهلا محمد';
+    return 'اهلا $name';
   }
 }

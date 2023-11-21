@@ -22,9 +22,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  final FocusNode emailNode = FocusNode();
+  final FocusNode phoneNode = FocusNode();
   final FocusNode passwordNode = FocusNode();
   final formKey = GlobalKey<FormState>();
 
@@ -35,8 +35,9 @@ class _LoginScreenState extends State<LoginScreen> {
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is SuccessLoginState) {
-            NamedNavigatorImpl.push(Routes.homePage,clean: true );
-          } else if (state is ErrorLoginState) {
+            NamedNavigatorImpl.push(Routes.homePage, clean: true);
+          }
+          if (state is ErrorLoginState) {
             PopUpHelper.showSnakeBar(message: state.message);
           }
         },
@@ -59,9 +60,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   32.sbH,
                   EmailTextField(
-                    controller: emailController,
+                    controller: phoneController,
                     isFirst: false,
-                    focusNode: emailNode,
+                    focusNode: phoneNode,
                   ),
                   16.sbH,
                   PasswordTextField(
@@ -80,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onBtnTap: () {
                           if (formKey.currentState!.validate()) {
                             cubit.login(
-                              email: emailController.text,
+                              phone: phoneController.text,
                               password: passwordController.text,
                             );
                           } else {

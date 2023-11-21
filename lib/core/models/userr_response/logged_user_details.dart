@@ -1,23 +1,27 @@
-class LoggedUserDetails {
-  LoggedUserDetails({
-    required this.email,
-    required this.mobile,
-    required this.fullName,
-  });
-
-  String email;
+class Driver {
+  int id;
   String mobile;
   String fullName;
+  String avatar;
 
-  factory LoggedUserDetails.fromJson(Map<String, dynamic> json) => LoggedUserDetails(
-        email: json["email"],
-        mobile: json["mobile"] ?? "",
-        fullName: json["full_name"],
-      );
+  Driver({
+    required this.id,
+    required this.mobile,
+    required this.fullName,
+    required this.avatar,
+  });
+
+  factory Driver.fromJson(Map<String, dynamic> json) => Driver(
+    id: json["id"],
+    mobile: json["mobile"],
+    fullName: json["full_name"],
+    avatar: json["avatar"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "email": email,
-        "mobile": mobile,
-        "full_name": fullName,
-      };
+    "id": id,
+    "mobile": mobile,
+    "full_name": fullName,
+    "avatar": avatar,
+  };
 }

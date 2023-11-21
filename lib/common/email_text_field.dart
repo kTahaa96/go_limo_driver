@@ -3,7 +3,6 @@ import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 
 import 'app_text_field.dart';
-import 'input_validator.dart';
 
 class EmailTextField extends StatelessWidget {
   const EmailTextField({
@@ -24,35 +23,28 @@ class EmailTextField extends StatelessWidget {
       controller: controller,
       focusNode: focusNode,
       textAlignVertical: TextAlignVertical.center,
-      style: const TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.w400,
-        color: AppColors.kBlack
-      ),
+      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w400, color: AppColors.kBlack),
 
       decoration: const FormInputDecoration(
         label: AppText(
-          'ادخل البريد الاكتروني',
+          'رقم الهاتف',
           size: 16,
           color: AppColors.kBlack,
           weight: FontWeight.w600,
         ),
       ),
-      autofillHints: const [
-        AutofillHints.email,
-      ],
+
       autocorrect: false,
-      keyboardType: TextInputType.emailAddress,
-      textDirection: TextDirection.ltr,
+      keyboardType: TextInputType.phone,
+      textDirection: TextDirection.rtl,
       textInputAction: TextInputAction.next,
       autovalidateMode: isFirst ? AutovalidateMode.disabled : AutovalidateMode.onUserInteraction,
       validator: (value) {
         if (value?.isEmpty ?? true) {
-          return 'ادخل البريد الالكتروني';
+          return 'ادخل رقم الهاتف';
         }
-
-        if (!InputValidator.isEmail(value!)) {
-          return 'ادخل بريد الكتروني صحيح';
+        if (value!.length < 10) {
+          return 'ادخل رقم هاتف صحيح';
         }
         return null;
       },

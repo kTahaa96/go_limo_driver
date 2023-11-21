@@ -3,12 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
+import 'package:golimo_driver/core/models/driver_order_response/driver_trips_item_model.dart';
 import 'package:golimo_driver/feature/booking_details/booking_details_screen.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
 
 class DailyTaskHomePageItem extends StatelessWidget {
-  const DailyTaskHomePageItem({super.key});
+  final TripItemModel model ;
+  const DailyTaskHomePageItem({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {

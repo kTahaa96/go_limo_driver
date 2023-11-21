@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:golimo_driver/core/models/driver_order_response/trips_response.dart';
+import 'package:golimo_driver/core/models/fuel/fuel_request_model.dart';
 import 'package:golimo_driver/core/models/fuel/get_fuel_histor_response.dart';
+import 'package:golimo_driver/core/models/general_response.dart';
 import 'package:golimo_driver/core/models/userr_response/login_response.dart';
 import 'package:golimo_driver/helpers/network/remote/api_endpoints.dart';
 import 'package:golimo_driver/helpers/network/repository.dart';
@@ -70,6 +72,30 @@ class RepoImpl extends Repository {
       onSuccess: () async {
         final f = await dioHelper.get(EndPoints.getFuelHistory);
         return FuelHistoryResponse.fromJson(f.data);
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, GeneralResponse>> addFuel(
+      {required FuelApiRequestModel requestModel}) async {
+    FormData apiRequestBody = FormData.fromMap({
+      "type": requestModel.type,
+      "amount": requestModel.amount,
+      "liters_no": requestModel.litersNo,
+      "kilometers_before": requestModel.kilometersBefore,
+      "kilometers_after": requestModel.kilometersAfter,
+      'meter_image_before': await MultipartFile.fromFile(requestModel.meterImageBefore.path),
+      'meter_image_after': await MultipartFile.fromFile(requestModel.meterImageAfter.path),
+      'receipt_image': await MultipartFile.fromFile(requestModel.receiptImage.path),
+    });
+    return _responseHandling<GeneralResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.post(
+          EndPoints.getFuelHistory,
+          data: apiRequestBody,
+        );
+        return GeneralResponse.fromJson(f.data);
       },
     );
   }

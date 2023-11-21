@@ -32,13 +32,13 @@ abstract class AppValidators {
   ]);
 
   static final phone = validators([
-    IsRequired("Enter Phone Number"),
-    IsPhoneNumber("Enter A Valid Phone Number"),
+    IsRequired("ادخل رقم هاتف صحيح"),
+    IsPhoneNumber("ادخل رقم هاتف صحيح"),
   ]);
 
   static final phoneOptional = validators([
     IsOptional(),
-    IsPhoneNumber("Enter A Valid Phone Number"),
+    IsPhoneNumber("ادخل رقم هاتف صحيح"),
   ]);
 
   static final requiredOnly = validators([

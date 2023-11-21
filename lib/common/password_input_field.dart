@@ -54,6 +54,8 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         AutofillHints.password,
       ],
       decoration: FormInputDecoration(
+        errorStyle: TextStyle(fontFamily: 'Alexandria'),
+
         label: AppText(
           'ادخل كلمة المرور',
           size: 16.sp,

@@ -30,7 +30,7 @@ class LoginCubit extends Cubit<LoginState> {
     }, (r) {
       di<CacheHelper>().put(CachingKey.isLogged, true);
 
-      DriverLoginResponse response = r;
+      LoginResponse response = r;
       saveUserDate(response.data);
       emit(SuccessLoginState());
     });

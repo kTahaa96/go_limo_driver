@@ -24,21 +24,24 @@ final Color? color ;
              color:color?? AppColors.kLightGray,
           ),
           18.sbH,
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-               AppText(
-                'تحديث',
-                color:color?? AppColors.kLightGray,
-              ),
-              4.sbW,
-               Icon(
-                Icons.refresh,
-                 color:color?? AppColors.kLightGray,
-                size: 16,
-              )
-            ],
+          InkWell(
+            onTap:onRefresh,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                 AppText(
+                  'تحديث',
+                  color:color?? AppColors.kLightGray,
+                ),
+                4.sbW,
+                 Icon(
+                  Icons.refresh,
+                   color:color?? AppColors.kLightGray,
+                  size: 16,
+                )
+              ],
+            ),
           ),
         ],
       ),

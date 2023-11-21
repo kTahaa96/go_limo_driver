@@ -37,17 +37,17 @@ class RepoImpl extends Repository {
   }
 
   @override
-  Future<Either<dynamic, DriverLoginResponse>> login({
+  Future<Either<dynamic, LoginResponse>> login({
     required String phone,
     required String password,
   }) async {
-    return _responseHandling<DriverLoginResponse>(
+    return _responseHandling<LoginResponse>(
       onSuccess: () async {
         final f = await dioHelper.post(
           EndPoints.login,
           data: FormData.fromMap({'phone': '+2$phone', 'password': password}),
         );
-        return DriverLoginResponse.fromJson(f.data);
+        return LoginResponse.fromJson(f.data);
       },
     );
   }

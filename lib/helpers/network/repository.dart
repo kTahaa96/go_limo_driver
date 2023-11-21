@@ -4,7 +4,7 @@ import 'package:golimo_driver/core/models/fuel/get_fuel_histor_response.dart';
 import 'package:golimo_driver/core/models/userr_response/login_response.dart';
 
 abstract class Repository {
-  Future<Either<dynamic, DriverLoginResponse>> login({
+  Future<Either<dynamic, LoginResponse>> login({
     required String phone,
     required String password,
   });

@@ -16,20 +16,47 @@ class DriverOrdersCubit extends Cubit<DriverOrdersState> {
   List<TripItemModel> previousTrips = [];
   List<TripItemModel> upcomingTrips = [];
 
-  void getTripsOrder(bool isPrevious) async {
-    emit(LoadingDriverOrdersState());
+  // void getTripsOrder(bool isPrevious) async {
+  //   emit(LoadingDriverOrdersState());
+  //
+  //   final f = await repository.getDriverOrders(isPrevious: isPrevious);
+  //   f.fold((l) {
+  //     emit(ErrorDriverOrdersState());
+  //   }, (r) {
+  //     if (isPrevious) {
+  //       previousTrips = r.data;
+  //     } else {
+  //       upcomingTrips = r.data;
+  //     }
+  //
+  //     emit(SuccessDriverOrdersState());
+  //   });
+  // }
 
-    final f = await repository.getDriverOrders(isPrevious: isPrevious);
+  void getPreviousTripsOrder() async {
+    emit(LoadingPreviousTripsState());
+
+    final f = await repository.getDriverOrders(isPrevious: true);
     f.fold((l) {
-      emit(ErrorDriverOrdersState());
+      emit(ErrorPreviousTripsState());
     }, (r) {
-      if (isPrevious) {
-        previousTrips = r.data;
-      } else {
-        upcomingTrips = r.data;
-      }
+      previousTrips = r.data;
 
-      emit(SuccessDriverOrdersState());
+      emit(SuccessPreviousTripsState());
+    });
+  }
+
+  void getUpcomingTripsOrder() async {
+    emit(LoadingUpcomingTripsState());
+
+    final f = await repository.getDriverOrders(isPrevious: false);
+    f.fold((l) {
+      emit(ErrorUpcomingTripsState());
+    }, (r) {
+      upcomingTrips = r.data;
+
+      emit(SuccessUpcomingTripsState());
+      getPreviousTripsOrder();
     });
   }
 }

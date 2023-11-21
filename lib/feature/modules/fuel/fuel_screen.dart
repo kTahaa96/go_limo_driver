@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:golimo_driver/common/conditional_builder.dart';
+import 'package:golimo_driver/common/error_widget.dart.dart';
 import 'package:golimo_driver/common/loader/app_loader.dart';
+import 'package:golimo_driver/common/state_conditional_builder.dart';
 import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/add_fuel_screen/add_fuel_screen.dart';
@@ -45,14 +46,19 @@ class FuelScreen extends StatelessWidget {
         ),
       ),
       body: SizedBox(
-
         height: double.infinity,
         child: BlocBuilder<FuelCubit, FuelState>(
           builder: (context, state) {
             final cubit = FuelCubit.of(context);
-            return ConditionalBuilder(
-              condition: state is LoadGetFuelState,
-              builder: (context) => AppLoader(),
+            return StateConditionalBuilder(
+              loadingCondition: state is LoadingGetFuelState,
+              loadingBuilder: (context) => const AppLoader(),
+              errorCondition: state is LoadingGetFuelState,
+              errorBuilder: (context) => ErrorStateWidget(
+                onRefresh: () {
+                  cubit.getFuelHistory();
+                },
+              ),
               fallback: (context) => ListView.builder(
                   padding: EdgeInsets.all(16.w),
                   shrinkWrap: true,

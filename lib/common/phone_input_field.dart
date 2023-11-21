@@ -3,6 +3,8 @@ import 'package:dash_flags/dash_flags.dart' as flag;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:golimo_driver/common/app_text_field.dart';
+import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 
 import '../helpers/validator/order_validators.dart';
@@ -84,57 +86,20 @@ class _PhoneTextFormFieldState extends State<PhoneTextFormField> {
       controller: widget.controller,
       keyboardType: widget.textInputType,
       textInputAction: widget.textInputAction,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode: AutovalidateMode.disabled,
       obscureText: widget.obscureText,
       onSaved: widget.onSaved,
       maxLines: widget.maxLines,
       textDirection: widget.textDirection,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(
-              color: AppColors.kPrimary,
-              width: 1.w,
-              style: BorderStyle.solid,
-            )),
-        focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(
-              color: AppColors.kPrimary,
-              width: 2.w,
-              style: BorderStyle.solid,
-            )),
-        focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(
-              color: AppColors.kRed,
-              width: 1.w,
-              style: BorderStyle.solid,
-            )),
-        errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(
-              color: AppColors.kRed,
-              width: 2.w,
-              style: BorderStyle.solid,
-            )),
-        enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(
-              color: AppColors.kGray,
-              width: 1.w,
-              style: BorderStyle.solid,
-            )),
-        hintText: country.countryCode.toLowerCase() == eg
-            ? '01001234567'
-            : '${country.phoneCode} ${country.example}',
-        contentPadding: const EdgeInsets.only(right: 0, left: 16, top: 12),
-        hintStyle: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
-          color: AppColors.kGrayText.withOpacity(0.6),
+      decoration: FormInputDecoration(
+        errorStyle: TextStyle(fontFamily: 'Alexandria'),
+        label: AppText(
+          'ادخل رقم الهاتف',
+          size: 15.sp,
+          color: AppColors.kBlack,
+          weight: FontWeight.w600,
         ),
-        prefixIcon: UnconstrainedBox(child: buildSuffixIcon(context)),
+        suffixIcon: UnconstrainedBox(child: buildSuffixIcon(context)),
       ),
       onChanged: (value) {
         widget.onChanged?.call(country.phoneCode);
@@ -148,17 +113,17 @@ class _PhoneTextFormFieldState extends State<PhoneTextFormField> {
           : (value) {
               if (widget.required) {
                 if (value!.isEmpty) {
-                  return "Enter Mobile Number";
+                  return "ادخل رقم الهاتف";
                 }
               }
               if (value!.isNotEmpty) {
                 String val = value.replaceAll(' ', '');
                 val = val.replaceAll('+', '');
                 if (!val.startsWith(country.phoneCode)) {
-                  return "Please Enter Country Code${country.phoneCode}";
+                  return "اختر كود الدولة${country.phoneCode}";
                 }
                 if (val.length != (country.example.length + country.phoneCode.length)) {
-                  return "Please Enter A valid Phone Number";
+                  return "ادخل رقم هاتف صحيح";
                 }
               }
               return null;

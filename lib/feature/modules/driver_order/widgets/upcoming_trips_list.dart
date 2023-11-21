@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:golimo_driver/common/custom_refresh_view.dart';
 import 'package:golimo_driver/common/error_widget.dart.dart';
 import 'package:golimo_driver/common/loader/app_loader.dart';
-import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/modules/driver_order/cubit/dirver_orders_cubit.dart';
 import 'package:golimo_driver/feature/modules/driver_order/widgets/driver_order_item.dart';
 
@@ -25,12 +25,7 @@ class UpcomingOrdersList extends StatelessWidget {
             },
           ),
           loadingBuilder: (context) => const AppLoader(),
-          fallback: (context) => RefreshIndicator(
-            color: AppColors.kBlack,
-            triggerMode: RefreshIndicatorTriggerMode.onEdge,
-            backgroundColor: AppColors.kWhite,
-            displacement: 100.0,
-            edgeOffset: 5,
+          fallback: (context) => CustomRefreshIndicator(
             onRefresh: () async {
               cubit.getUpcomingTripsOrder();
             },

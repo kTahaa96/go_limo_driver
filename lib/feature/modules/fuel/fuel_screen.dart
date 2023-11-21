@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:golimo_driver/common/custom_refresh_view.dart';
 import 'package:golimo_driver/common/error_widget.dart.dart';
 import 'package:golimo_driver/common/loader/app_loader.dart';
 import 'package:golimo_driver/common/state_conditional_builder.dart';
@@ -59,12 +60,7 @@ class FuelScreen extends StatelessWidget {
                   cubit.getFuelHistory();
                 },
               ),
-              fallback: (context) => RefreshIndicator(
-                color: AppColors.kBlack,
-                triggerMode:RefreshIndicatorTriggerMode.onEdge,
-                backgroundColor: AppColors.kWhite,
-                displacement: 100.0,
-                edgeOffset: 5,
+              fallback: (context) => CustomRefreshIndicator(
                 onRefresh: () async {
                   cubit.getFuelHistory();
                 },

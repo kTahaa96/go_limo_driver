@@ -13,8 +13,8 @@ class DriverOrdersCubit extends Cubit<DriverOrdersState> {
 
   static DriverOrdersCubit of(context) => BlocProvider.of(context);
   late DriverTripsResponse driverTripsResponse;
-  List<TripItemModel> previousData = [];
-  List<TripItemModel> upcomingData = [];
+  List<TripItemModel> previousTrips = [];
+  List<TripItemModel> upcomingTrips = [];
 
   void getTripsOrder(bool isPrevious) async {
     emit(LoadingDriverOrdersState());
@@ -24,9 +24,9 @@ class DriverOrdersCubit extends Cubit<DriverOrdersState> {
       emit(ErrorDriverOrdersState());
     }, (r) {
       if (isPrevious) {
-        previousData = r.data;
+        previousTrips = r.data;
       } else {
-        upcomingData = r.data;
+        upcomingTrips = r.data;
       }
 
       emit(SuccessDriverOrdersState());

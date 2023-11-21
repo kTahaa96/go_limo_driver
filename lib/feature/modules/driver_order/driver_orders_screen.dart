@@ -77,13 +77,13 @@ class DriverOrders extends StatelessWidget {
                           child: TabBarView(
                             children: [
                               OrdersList(
-                                list: cubit.upcomingData,
+                                list: cubit.upcomingTrips,
                                 onRefresh: () {
                                   cubit.getTripsOrder(false);
                                 },
                               ),
                               OrdersList(
-                                list: cubit.previousData,
+                                list: cubit.previousTrips,
                                 onRefresh: () {
                                   cubit.getTripsOrder(true);
                                 },

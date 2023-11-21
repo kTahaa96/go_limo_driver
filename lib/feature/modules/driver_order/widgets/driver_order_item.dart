@@ -7,16 +7,16 @@ import 'package:golimo_driver/core/models/driver_order_response/driver_trips_ite
 import 'package:golimo_driver/feature/booking_details/booking_details_screen.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
-
 class DailyTaskHomePageItem extends StatelessWidget {
-  final TripItemModel model ;
+  final TripItemModel model;
+
   const DailyTaskHomePageItem({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => TripOrder()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const TripOrder()));
       },
       child: Container(
         padding: EdgeInsets.all(16.h),
@@ -44,14 +44,19 @@ class DailyTaskHomePageItem extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppText(
-                      'سفر من الاسكندرية',
-                      size: 14.sp,
-                      weight: FontWeight.w400,
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width/2.7,
+                      child: AppText(
+                        'سفر من ${model.dropToFrom}',
+                        maxLines: 1,
+                        size: 14.sp,
+                        withOverFlow: true,
+                        weight: FontWeight.w400,
+                      ),
                     ),
                     8.sbH,
                     AppText(
-                      DateTime.now().toDateFormat(format: 'hh:mm a',locale: "ar"),
+                      DateTime.now().toDateFormat(format: 'hh:mm a', locale: "ar"),
                       size: 16.sp,
                       color: AppColors.kDarkGray,
                       weight: FontWeight.w700,
@@ -67,17 +72,22 @@ class DailyTaskHomePageItem extends StatelessWidget {
                       weight: FontWeight.w400,
                     ),
                     8.sbH,
-                    AppText(
-                      "التجمع الاول",
-                      size: 18.sp,
-                      color: AppColors.kDarkGreyText,
-                      weight: FontWeight.w700,
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width/2.7,
+                      child: AppText(
+                        model.pickupFrom,
+                        size: 18.sp,
+                        withOverFlow: true,
+                        maxLines: 1,
+                        color: AppColors.kDarkGreyText,
+                        weight: FontWeight.w700,
+                      ),
                     ),
                   ],
                 ),
               ],
             ),
-            Divider(color: AppColors.kLightGray),
+            const Divider(color: AppColors.kLightGray),
             Row(
               children: [
                 SvgPicture.asset(
@@ -87,7 +97,7 @@ class DailyTaskHomePageItem extends StatelessWidget {
                 ),
                 4.sbW,
                 AppText(
-                  "محمد احمداحمد محمود عبد السلام",
+                  model.passenger.fullName,
                   size: 14.sp,
                   color: AppColors.kDarkGreyText,
                   weight: FontWeight.w500,

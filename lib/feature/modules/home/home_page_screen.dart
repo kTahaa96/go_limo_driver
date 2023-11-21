@@ -34,7 +34,7 @@ class HomePageScreen extends StatelessWidget {
                   return ConditionalBuilder(
                     condition: state is LoadingDriverOrdersState,
                     builder: (context) => Container(
-                        height: 190.h,
+                        height: 320.h,
                         width: double.infinity,
                         padding: EdgeInsets.all(16.w),
                         decoration: BoxDecoration(
@@ -48,7 +48,7 @@ class HomePageScreen extends StatelessWidget {
                       condition: state is ErrorDriverOrdersState,
                       builder: (context) => const SizedBox(),
                       fallback: (context) => Container(
-                        height: 190.h,
+                        height: 320.h,
                         width: double.infinity,
                         padding: EdgeInsets.all(16.w),
                         decoration: BoxDecoration(
@@ -57,7 +57,7 @@ class HomePageScreen extends StatelessWidget {
                               bottomLeft: Radius.circular(18.r),
                               bottomRight: Radius.circular(18.r),
                             )),
-                        child: cubit.upcomingData.isEmpty
+                        child: cubit.upcomingTrips.isEmpty
                             ? EmptyView(
                                 text: 'لا توجد اوامر شغل حتي الان',
                                 color: AppColors.kWhite,
@@ -76,13 +76,14 @@ class HomePageScreen extends StatelessWidget {
                                   ),
                                   8.sbH,
                                   ListView.builder(
-                                      itemCount: cubit.upcomingData.length > 2
+                                      itemCount: cubit.upcomingTrips.length > 2
                                           ? 2
-                                          : cubit.upcomingData.length,
+                                          : cubit.upcomingTrips.length,
                                       shrinkWrap: true,
+                                      physics: NeverScrollableScrollPhysics(),
                                       itemBuilder: (context, index) {
                                         return DailyTaskHomePageItem(
-                                            model: cubit.upcomingData[index]);
+                                            model: cubit.upcomingTrips[index]);
                                       }),
                                 ],
                               ),

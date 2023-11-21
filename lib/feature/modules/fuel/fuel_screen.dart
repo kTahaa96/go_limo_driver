@@ -44,20 +44,24 @@ class FuelScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: BlocBuilder<FuelCubit, FuelState>(
-        builder: (context, state) {
-          final cubit = FuelCubit.of(context);
-          return ConditionalBuilder(
-            condition: state is LoadGetFuelState,
-            builder: (context) => AppLoader(),
-            fallback: (context) => ListView.builder(
-                padding: EdgeInsets.all(16.w),
-                shrinkWrap: true,
-                itemCount: cubit.fuelHistoryResponse!.data.length,
-                itemBuilder: (context, index) =>
-                    FuelItem(model: cubit.fuelHistoryResponse!.data[index])),
-          );
-        },
+      body: SizedBox(
+
+        height: double.infinity,
+        child: BlocBuilder<FuelCubit, FuelState>(
+          builder: (context, state) {
+            final cubit = FuelCubit.of(context);
+            return ConditionalBuilder(
+              condition: state is LoadGetFuelState,
+              builder: (context) => AppLoader(),
+              fallback: (context) => ListView.builder(
+                  padding: EdgeInsets.all(16.w),
+                  shrinkWrap: true,
+                  itemCount: cubit.fuelHistoryResponse!.data.length,
+                  itemBuilder: (context, index) =>
+                      FuelItem(model: cubit.fuelHistoryResponse!.data[index])),
+            );
+          },
+        ),
       ),
     );
   }

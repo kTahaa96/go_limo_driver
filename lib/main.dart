@@ -9,6 +9,7 @@ import 'package:golimo_driver/core/consts/strings.dart';
 import 'package:golimo_driver/feature/login/login.dart';
 import 'package:golimo_driver/feature/modules/driver_order/cubit/dirver_orders_cubit.dart';
 import 'package:golimo_driver/feature/modules/fuel/cubit/fuel_cubit.dart';
+import 'package:golimo_driver/feature/modules/rewards/cubit/rewards_cubit.dart';
 import 'package:golimo_driver/feature/splash/cubit/splash_cubit.dart';
 import 'package:golimo_driver/feature/splash/splash_screen.dart';
 import 'package:golimo_driver/helpers/di/di.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di<ThemeCubit>()),
         BlocProvider(create: (context) => di<DriverOrdersCubit>()..getUpcomingTripsOrder()),
         BlocProvider(create: (context) => di<FuelCubit>()..getFuelHistory()),
+        BlocProvider(create: (context) => di<RewardsCubit>()..getAwards()),
       ],
       child: BlocListener<NetworkCubit, NetworkStates>(
         listenWhen: (previous, current) {

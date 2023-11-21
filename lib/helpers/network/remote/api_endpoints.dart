@@ -7,6 +7,8 @@ class EndPoints {
   static const String upcomingBooking = 'trips/upcoming';
   static const String previousBooking = 'trips/previous';
   static const String getFuelHistory = 'fuel';
+  static const String getTransactions = 'incentives/transactions';
+  static const String getAwards = 'incentives/awards';
 
 
   static bool get isProduction => dotenv.env['ENV_TYPE'] == 'production';

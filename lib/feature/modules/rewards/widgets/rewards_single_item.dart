@@ -6,7 +6,11 @@ import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
 class RewardsSingleItem extends StatelessWidget {
-  const RewardsSingleItem({super.key});
+  final String label;
+  final DateTime date;
+  final int amount;
+  final bool isPlus ;
+  const RewardsSingleItem({super.key, required this.label, required this.date, required this.amount, required this.isPlus});
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +23,20 @@ class RewardsSingleItem extends StatelessWidget {
             children: [
               SvgPicture.asset('assets/svg_icons/arrow_in.svg', width: 28.w, height: 28),
               8.sbW,
-              const AppText('صرف حوافز'),
+               AppText('${label}'),
             ],
           ),
           Column(
             children: [
               AppText(
-                '+90 EGP',
+                '${isPlus?'+' : '-'}${amount} EGP',
                 size: 12,
-                color: AppColors.kGreen,
+                color: isPlus?AppColors.kGreen:AppColors.kRed,
                 weight: FontWeight.w400,
               ),
               4.sbH,
               AppText(
-                ' ${DateTime.now().toDateFormat()}',
+                ' ${date.toDateFormat()}',
                 size: 10,
                 color: AppColors.kGrayText,
                 weight: FontWeight.w400,

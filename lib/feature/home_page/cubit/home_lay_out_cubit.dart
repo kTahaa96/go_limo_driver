@@ -33,9 +33,8 @@ class HomeLayOutCubit extends Cubit<HomeLayOutState> {
   void getHomeData() {
     emit(LoadingGetHomeDataState());
     user = UserPreferencesHelper().getUserPreference();
-    log('${user!.driver.fullName}');
-    log('${user!.driver.mobile}');
-    log('${user!.driver.id}');
+
+    log('Token ${user!.token}');
     emit(SuccessGetHomeDataState());
   }
 

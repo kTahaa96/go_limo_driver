@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:golimo_driver/core/models/awards_responses/awards_response.dart';
+import 'package:golimo_driver/core/models/awards_responses/transaction_object.dart';
 import 'package:golimo_driver/core/models/driver_order_response/trips_response.dart';
 import 'package:golimo_driver/core/models/fuel/get_fuel_histor_response.dart';
 import 'package:golimo_driver/core/models/userr_response/login_response.dart';
@@ -70,6 +72,26 @@ class RepoImpl extends Repository {
       onSuccess: () async {
         final f = await dioHelper.get(EndPoints.getFuelHistory);
         return FuelHistoryResponse.fromJson(f.data);
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, AwardsResponse>> getAwards() {
+    return _responseHandling<AwardsResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.get(EndPoints.getAwards);
+        return AwardsResponse.fromJson(f.data);
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, TransactionsResponse>> getTransactions() {
+    return _responseHandling<TransactionsResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.get(EndPoints.getTransactions);
+        return TransactionsResponse.fromJson(f.data);
       },
     );
   }

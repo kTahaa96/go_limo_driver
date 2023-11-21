@@ -11,27 +11,11 @@ class DriverOrdersCubit extends Cubit<DriverOrdersState> {
 
   DriverOrdersCubit({required this.repository}) : super(InitialDriverOrdersState());
 
-  static DriverOrdersCubit of(context) => BlocProvider.of(context);
+    static DriverOrdersCubit of(context) => BlocProvider.of(context);
   late DriverTripsResponse driverTripsResponse;
   List<TripItemModel> previousTrips = [];
   List<TripItemModel> upcomingTrips = [];
 
-  // void getTripsOrder(bool isPrevious) async {
-  //   emit(LoadingDriverOrdersState());
-  //
-  //   final f = await repository.getDriverOrders(isPrevious: isPrevious);
-  //   f.fold((l) {
-  //     emit(ErrorDriverOrdersState());
-  //   }, (r) {
-  //     if (isPrevious) {
-  //       previousTrips = r.data;
-  //     } else {
-  //       upcomingTrips = r.data;
-  //     }
-  //
-  //     emit(SuccessDriverOrdersState());
-  //   });
-  // }
 
   void getPreviousTripsOrder() async {
     emit(LoadingPreviousTripsState());

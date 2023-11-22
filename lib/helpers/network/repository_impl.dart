@@ -5,7 +5,9 @@ import 'package:dio/dio.dart';
 import 'package:golimo_driver/core/models/awards_responses/awards_response.dart';
 import 'package:golimo_driver/core/models/awards_responses/transaction_object.dart';
 import 'package:golimo_driver/core/models/driver_order_response/trips_response.dart';
+import 'package:golimo_driver/core/models/fuel/fuel_request_model.dart';
 import 'package:golimo_driver/core/models/fuel/get_fuel_histor_response.dart';
+import 'package:golimo_driver/core/models/general_response.dart';
 import 'package:golimo_driver/core/models/userr_response/login_response.dart';
 import 'package:golimo_driver/helpers/network/remote/api_endpoints.dart';
 import 'package:golimo_driver/helpers/network/repository.dart';
@@ -94,6 +96,12 @@ class RepoImpl extends Repository {
         return TransactionsResponse.fromJson(f.data);
       },
     );
+  }
+
+  @override
+  Future<Either<dynamic, GeneralResponse>> addFuel({required FuelApiRequestModel requestModel}) {
+    // TODO: implement addFuel
+    throw UnimplementedError();
   }
 }
 

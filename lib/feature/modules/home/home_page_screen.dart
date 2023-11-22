@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:golimo_driver/common/conditional_builder.dart';
 import 'package:golimo_driver/common/empty_view.dart';
+import 'package:golimo_driver/common/error_widget.dart.dart';
 import 'package:golimo_driver/common/loader/app_loader.dart';
+import 'package:golimo_driver/common/state_conditional_builder.dart';
 import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/modules/driver_order/cubit/dirver_orders_cubit.dart';
@@ -30,62 +31,53 @@ class HomePageScreen extends StatelessWidget {
               BlocBuilder<DriverOrdersCubit, DriverOrdersState>(
                 builder: (context, state) {
                   final cubit = DriverOrdersCubit.of(context);
-
-                  return ConditionalBuilder(
-                    condition: state is LoadingDriverOrdersState,
-                    builder: (context) => Container(
-                        height: 190.h,
-                        width: double.infinity,
-                        padding: EdgeInsets.all(16.w),
-                        decoration: BoxDecoration(
-                            color: AppColors.kPrimaryBackground,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(18.r),
-                              bottomRight: Radius.circular(18.r),
-                            )),
-                        child: const AppLoader()),
-                    fallback: (context) => ConditionalBuilder(
-                      condition: state is ErrorDriverOrdersState,
-                      builder: (context) => const SizedBox(),
-                      fallback: (context) => Container(
-                        height: 190.h,
-                        width: double.infinity,
-                        padding: EdgeInsets.all(16.w),
-                        decoration: BoxDecoration(
-                            color: AppColors.kPrimaryBackground,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(18.r),
-                              bottomRight: Radius.circular(18.r),
-                            )),
-                        child: cubit.upcomingData.isEmpty
-                            ? EmptyView(
-                                text: 'لا توجد اوامر شغل حتي الان',
-                                color: AppColors.kWhite,
-                                onRefresh: () {
-                                  cubit.getTripsOrder(false);
-                                },
-                              )
-                            : Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  AppText(
-                                    'اوامر شغل اليوم',
-                                    size: 14.sp,
-                                    weight: FontWeight.w500,
-                                    color: AppColors.kWhite,
-                                  ),
-                                  8.sbH,
-                                  ListView.builder(
-                                      itemCount: cubit.upcomingData.length > 2
-                                          ? 2
-                                          : cubit.upcomingData.length,
-                                      shrinkWrap: true,
-                                      itemBuilder: (context, index) {
-                                        return DailyTaskHomePageItem(
-                                            model: cubit.upcomingData[index]);
-                                      }),
-                                ],
-                              ),
+                  return Container(
+                    height: 320.h,
+                    width: double.infinity,
+                    padding: EdgeInsets.all(16.w),
+                    decoration: BoxDecoration(
+                        color: AppColors.kPrimaryBackground,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(18.r),
+                          bottomRight: Radius.circular(18.r),
+                        )),
+                    child: StateConditionalBuilder(
+                      loadingCondition: state is LoadingUpcomingTripsState,
+                      errorCondition: state is ErrorUpcomingTripsState,
+                      errorBuilder: (context) => ErrorStateWidget(
+                        onRefresh: () {
+                          cubit.getUpcomingTripsOrder();
+                        },
+                      ),
+                      loadingBuilder: (context) => const AppLoader(),
+                      fallback: (context) => Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppText(
+                            'اوامر شغل اليوم',
+                            size: 14.sp,
+                            weight: FontWeight.w500,
+                            color: AppColors.kWhite,
+                          ),
+                          8.sbH,
+                          cubit.upcomingTrips.isEmpty
+                              ? EmptyView(
+                                  text: 'لا توجد اوامر شغل حتي الان',
+                                  color: AppColors.kWhite,
+                                  onRefresh: () {
+                                    cubit.getUpcomingTripsOrder();
+                                  },
+                                )
+                              : ListView.builder(
+                                  itemCount: cubit.upcomingTrips.length > 2
+                                      ? 2
+                                      : cubit.upcomingTrips.length,
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemBuilder: (context, index) {
+                                    return DailyTaskHomePageItem(model: cubit.upcomingTrips[index]);
+                                  }),
+                        ],
                       ),
                     ),
                   );

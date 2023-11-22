@@ -31,12 +31,11 @@ class HomeLayOutCubit extends Cubit<HomeLayOutState> {
   UserData? user;
 
   void getHomeData() {
-    emit(LoadingHomeDataState());
+    emit(LoadingGetHomeDataState());
     user = UserPreferencesHelper().getUserPreference();
-    log('${user!.driver.fullName}');
-    log('${user!.driver.mobile}');
-    log('${user!.driver.id}');
-    emit(SuccessHomeDataState());
+
+    log('Token ${user!.token}');
+    emit(SuccessGetHomeDataState());
   }
 
   void updatePageIndex({required int newVal}) {

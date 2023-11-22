@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:golimo_driver/core/models/awards_responses/awards_response.dart';
+import 'package:golimo_driver/core/models/awards_responses/transaction_object.dart';
 import 'package:golimo_driver/core/models/driver_order_response/trips_response.dart';
 import 'package:golimo_driver/core/models/fuel/fuel_request_model.dart';
 import 'package:golimo_driver/core/models/fuel/get_fuel_histor_response.dart';
@@ -39,17 +41,17 @@ class RepoImpl extends Repository {
   }
 
   @override
-  Future<Either<dynamic, DriverLoginResponse>> login({
+  Future<Either<dynamic, LoginResponse>> login({
     required String phone,
     required String password,
   }) async {
-    return _responseHandling<DriverLoginResponse>(
+    return _responseHandling<LoginResponse>(
       onSuccess: () async {
         final f = await dioHelper.post(
           EndPoints.login,
           data: FormData.fromMap({'phone': '+2$phone', 'password': password}),
         );
-        return DriverLoginResponse.fromJson(f.data);
+        return LoginResponse.fromJson(f.data);
       },
     );
   }
@@ -77,27 +79,29 @@ class RepoImpl extends Repository {
   }
 
   @override
-  Future<Either<dynamic, GeneralResponse>> addFuel(
-      {required FuelApiRequestModel requestModel}) async {
-    FormData apiRequestBody = FormData.fromMap({
-      "type": requestModel.type,
-      "amount": requestModel.amount,
-      "liters_no": requestModel.litersNo,
-      "kilometers_before": requestModel.kilometersBefore,
-      "kilometers_after": requestModel.kilometersAfter,
-      'meter_image_before': await MultipartFile.fromFile(requestModel.meterImageBefore.path),
-      'meter_image_after': await MultipartFile.fromFile(requestModel.meterImageAfter.path),
-      'receipt_image': await MultipartFile.fromFile(requestModel.receiptImage.path),
-    });
-    return _responseHandling<GeneralResponse>(
+  Future<Either<dynamic, AwardsResponse>> getAwards() {
+    return _responseHandling<AwardsResponse>(
       onSuccess: () async {
-        final f = await dioHelper.post(
-          EndPoints.getFuelHistory,
-          data: apiRequestBody,
-        );
-        return GeneralResponse.fromJson(f.data);
+        final f = await dioHelper.get(EndPoints.getAwards);
+        return AwardsResponse.fromJson(f.data);
       },
     );
+  }
+
+  @override
+  Future<Either<dynamic, TransactionsResponse>> getTransactions() {
+    return _responseHandling<TransactionsResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.get(EndPoints.getTransactions);
+        return TransactionsResponse.fromJson(f.data);
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, GeneralResponse>> addFuel({required FuelApiRequestModel requestModel}) {
+    // TODO: implement addFuel
+    throw UnimplementedError();
   }
 }
 

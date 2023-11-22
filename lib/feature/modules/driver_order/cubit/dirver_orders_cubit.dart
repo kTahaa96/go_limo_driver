@@ -11,25 +11,36 @@ class DriverOrdersCubit extends Cubit<DriverOrdersState> {
 
   DriverOrdersCubit({required this.repository}) : super(InitialDriverOrdersState());
 
-  static DriverOrdersCubit of(context) => BlocProvider.of(context);
+    static DriverOrdersCubit of(context) => BlocProvider.of(context);
   late DriverTripsResponse driverTripsResponse;
-  List<TripItemModel> previousData = [];
-  List<TripItemModel> upcomingData = [];
+  List<TripItemModel> previousTrips = [];
+  List<TripItemModel> upcomingTrips = [];
 
-  void getTripsOrder(bool isPrevious) async {
-    emit(LoadingDriverOrdersState());
 
-    final f = await repository.getDriverOrders(isPrevious: isPrevious);
+  void getPreviousTripsOrder() async {
+    emit(LoadingPreviousTripsState());
+
+    final f = await repository.getDriverOrders(isPrevious: true);
     f.fold((l) {
-      emit(ErrorDriverOrdersState());
+      emit(ErrorPreviousTripsState());
     }, (r) {
-      if (isPrevious) {
-        previousData = r.data;
-      } else {
-        upcomingData = r.data;
-      }
+      previousTrips = r.data;
 
-      emit(SuccessDriverOrdersState());
+      emit(SuccessPreviousTripsState());
+    });
+  }
+
+  void getUpcomingTripsOrder() async {
+    emit(LoadingUpcomingTripsState());
+
+    final f = await repository.getDriverOrders(isPrevious: false);
+    f.fold((l) {
+      emit(ErrorUpcomingTripsState());
+    }, (r) {
+      upcomingTrips = r.data;
+
+      emit(SuccessUpcomingTripsState());
+      getPreviousTripsOrder();
     });
   }
 }

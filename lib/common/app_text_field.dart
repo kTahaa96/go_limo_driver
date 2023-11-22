@@ -123,6 +123,7 @@ mixin _FormInputDecoration on InputDecoration {
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
     height: null,
+    fontFamily: 'Alexandria',
     color: AppColors.kRed,
   );
 

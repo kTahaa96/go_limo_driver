@@ -6,6 +6,7 @@ import 'package:golimo_driver/feature/login/cubit/login_cubit.dart';
 import 'package:golimo_driver/feature/modules/driver_order/cubit/dirver_orders_cubit.dart';
 import 'package:golimo_driver/feature/modules/home/cubit/home_cubit.dart';
 import 'package:golimo_driver/feature/modules/notificatiton_center/cubit/notification_center_cubit.dart';
+import 'package:golimo_driver/feature/modules/rewards/cubit/rewards_cubit.dart';
 import 'package:golimo_driver/feature/splash/cubit/splash_cubit.dart';
 import 'package:golimo_driver/helpers/local/cache_helper.dart';
 import 'package:golimo_driver/helpers/location_helper/cubit/location_cubit.dart';
@@ -46,6 +47,7 @@ Future init() async {
   di.registerFactory<LoginCubit>(() => LoginCubit(repository: di<Repository>()));
   di.registerFactory<DriverOrdersCubit>(() => DriverOrdersCubit(repository: di<Repository>()));
   di.registerFactory<FuelCubit>(() => FuelCubit(repository: di<Repository>()));
+  di.registerFactory<RewardsCubit>(() => RewardsCubit(repository: di<Repository>()));
   // di.registerFactory<LocationCubit>(() => LocationCubit(repository: di<Repository>()));
   di.registerFactory<HomeLayOutCubit>(() => HomeLayOutCubit());
   di.registerFactory<HomeCubit>(() => HomeCubit());

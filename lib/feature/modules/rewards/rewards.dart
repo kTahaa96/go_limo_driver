@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
+import 'package:golimo_driver/feature/modules/rewards/widgets/awards_view.dart';
 import 'package:golimo_driver/feature/modules/rewards/widgets/rewards_single_item.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
+
+import 'widgets/transactions_view.dart';
 
 class RewardsScreen extends StatelessWidget {
   const RewardsScreen({super.key});
@@ -106,31 +109,11 @@ class RewardsScreen extends StatelessWidget {
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height - 150,
-                  child: TabBarView(
-                    physics: const NeverScrollableScrollPhysics(),
+                  child: const TabBarView(
+                    physics: NeverScrollableScrollPhysics(),
                     children: [
-                      ListView.separated(
-                          padding: EdgeInsets.symmetric(horizontal: 19.w),
-                          separatorBuilder: (context, index) => const Divider(
-                                thickness: 2,
-                              ),
-                          itemCount: 12,
-                          shrinkWrap: true,
-                          // physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return const RewardsSingleItem();
-                          }),
-                      ListView.separated(
-                          padding: EdgeInsets.symmetric(horizontal: 19.w),
-                          separatorBuilder: (context, index) => const Divider(
-                                thickness: 2,
-                              ),
-                          itemCount: 12,
-                          shrinkWrap: true,
-                          // physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return const RewardsSingleItem();
-                          })
+                      AwardsView(),
+                      TransactionsView()
                     ],
                   ),
                 )

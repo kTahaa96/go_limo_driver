@@ -23,7 +23,7 @@ class FuelCubit extends Cubit<FuelState> {
 
 
   void getFuelHistory() async {
-    emit(LoadGetFuelState());
+    emit(LoadingGetFuelState());
     final f = await repository.getFuelHistory();
     f.fold((l) {
       emit(ErrorGetFuelState());

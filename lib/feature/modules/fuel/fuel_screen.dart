@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:golimo_driver/common/conditional_builder.dart';
+import 'package:golimo_driver/common/custom_refresh_view.dart';
+import 'package:golimo_driver/common/error_widget.dart.dart';
 import 'package:golimo_driver/common/loader/app_loader.dart';
+import 'package:golimo_driver/common/state_conditional_builder.dart';
 import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/feature/add_fuel_screen/add_fuel_screen.dart';
@@ -44,20 +46,34 @@ class FuelScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: BlocBuilder<FuelCubit, FuelState>(
-        builder: (context, state) {
-          final cubit = FuelCubit.of(context);
-          return ConditionalBuilder(
-            condition: state is LoadGetFuelState,
-            builder: (context) => AppLoader(),
-            fallback: (context) => ListView.builder(
-                padding: EdgeInsets.all(16.w),
-                shrinkWrap: true,
-                itemCount: cubit.fuelHistoryResponse!.data.length,
-                itemBuilder: (context, index) =>
-                    FuelItem(model: cubit.fuelHistoryResponse!.data[index])),
-          );
-        },
+      body: SizedBox(
+        height: double.infinity,
+        child: BlocBuilder<FuelCubit, FuelState>(
+          builder: (context, state) {
+            final cubit = FuelCubit.of(context);
+            return StateConditionalBuilder(
+              loadingCondition: state is LoadingGetFuelState,
+              loadingBuilder: (context) => const AppLoader(),
+              errorCondition: state is LoadingGetFuelState,
+              errorBuilder: (context) => ErrorStateWidget(
+                onRefresh: () {
+                  cubit.getFuelHistory();
+                },
+              ),
+              fallback: (context) => CustomRefreshIndicator(
+                onRefresh: () async {
+                  cubit.getFuelHistory();
+                },
+                child: ListView.builder(
+                    padding: EdgeInsets.all(16.w),
+                    shrinkWrap: true,
+                    itemCount: cubit.fuelHistoryResponse!.data.length,
+                    itemBuilder: (context, index) =>
+                        FuelItem(model: cubit.fuelHistoryResponse!.data[index])),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

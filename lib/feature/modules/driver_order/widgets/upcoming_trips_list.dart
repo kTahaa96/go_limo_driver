@@ -8,8 +8,8 @@ import 'package:golimo_driver/feature/modules/driver_order/widgets/driver_order_
 
 import '../../../../common/state_conditional_builder.dart';
 
-class PreviousOrdersList extends StatelessWidget {
-  const PreviousOrdersList({super.key});
+class UpcomingOrdersList extends StatelessWidget {
+  const UpcomingOrdersList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,23 +17,23 @@ class PreviousOrdersList extends StatelessWidget {
       builder: (context, state) {
         final cubit = DriverOrdersCubit.of(context);
         return StateConditionalBuilder(
-          loadingCondition: state is LoadingPreviousTripsState,
-          errorCondition: state is LoadingPreviousTripsState,
+          loadingCondition: state is LoadingUpcomingTripsState,
+          errorCondition: state is ErrorUpcomingTripsState,
           errorBuilder: (context) => ErrorStateWidget(
             onRefresh: () {
-              cubit.getPreviousTripsOrder();
+              cubit.getUpcomingTripsOrder();
             },
           ),
           loadingBuilder: (context) => const AppLoader(),
           fallback: (context) => CustomRefreshIndicator(
             onRefresh: () async {
-              cubit.getPreviousTripsOrder();
+              cubit.getUpcomingTripsOrder();
             },
             child: ListView.builder(
-              itemCount: cubit.previousTrips.length,
+              itemCount: cubit.upcomingTrips.length,
               shrinkWrap: true,
               itemBuilder: (context, index) =>
-                  DailyTaskHomePageItem(model: cubit.previousTrips[index]),
+                  DailyTaskHomePageItem(model: cubit.upcomingTrips[index]),
             ),
           ),
         );

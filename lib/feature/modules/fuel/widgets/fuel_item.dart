@@ -36,10 +36,10 @@ class FuelItem extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppText('${model.amount}0 لتر', size: 14, weight: FontWeight.w600),
+                    AppText('${model.litersNo} لتر', size: 14, weight: FontWeight.w600),
                     7.sbH,
                     AppText(
-                      '500 جم - بنزين ${model.type == 1 ? "92" : 95}',
+                      '${model.amount} جم - بنزين ${model.type == 1 ? "92" : 95}',
                       size: 11,
                       color: AppColors.kGray,
                       weight: FontWeight.w400,

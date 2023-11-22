@@ -4,9 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:golimo_driver/common/alert_message.dart';
 import 'package:golimo_driver/common/conditional_builder.dart';
 import 'package:golimo_driver/common/custom_button.dart';
-import 'package:golimo_driver/common/email_text_field.dart';
 import 'package:golimo_driver/common/loader/app_loader.dart';
 import 'package:golimo_driver/common/password_input_field.dart';
+import 'package:golimo_driver/common/phone_input_field.dart';
 import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/feature/login/cubit/login_cubit.dart';
 import 'package:golimo_driver/helpers/di/di.dart';
@@ -27,6 +27,14 @@ class _LoginScreenState extends State<LoginScreen> {
   final FocusNode phoneNode = FocusNode();
   final FocusNode passwordNode = FocusNode();
   final formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    phoneNode.dispose();
+    passwordNode.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,17 +66,34 @@ class _LoginScreenState extends State<LoginScreen> {
                     size: 21,
                     weight: FontWeight.w600,
                   ),
-                  32.sbH,
-                  EmailTextField(
-                    controller: phoneController,
-                    isFirst: false,
+                  55.sbH,
+                  PhoneTextFormField(
+                    canChangeCountry: false,
                     focusNode: phoneNode,
+                    controller: phoneController,
+                    textInputType: TextInputType.phone,
+                    textInputAction: TextInputAction.go,
+                    onSubmitted: (value) {
+                      FocusScope.of(context).requestFocus(passwordNode);
+                    },
+                    hintTitle: '',
+                    required: true,
                   ),
-                  16.sbH,
+                  32.sbH,
                   PasswordTextField(
                     controller: passwordController,
                     focusNode: passwordNode,
                     labelText: "Password",
+                    onSubmitted: (value) {
+                      if (formKey.currentState!.validate()) {
+                        cubit.login(
+                          phone: phoneController.text,
+                          password: passwordController.text,
+                        );
+                      } else {
+                        return;
+                      }
+                    },
                   ),
                   134.sbH,
                   ConditionalBuilder(

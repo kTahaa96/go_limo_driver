@@ -7,7 +7,7 @@ import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   final int currentIndex;
-  final Function(int index) onItemTap;
+final Function(int index) onItemTap;
 
   const CustomBottomNavigationBar({super.key, required this.currentIndex, required this.onItemTap});
 

@@ -85,8 +85,8 @@ class HomePageScreen extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(16.w),
-                child: const Row(
-                  children: [
+                child:  Row(
+                  children: const [
                     AppText('تنبيهات مهمة', color: AppColors.kGrayText),
                   ],
                 ),

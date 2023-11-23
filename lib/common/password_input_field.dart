@@ -8,6 +8,8 @@ class PasswordTextField extends StatefulWidget {
   final TextEditingController controller;
   final FocusNode focusNode;
   final String? labelText;
+  final bool isFirst;
+
   final String? Function(String?)? validator;
   final TextInputAction? textInputAction;
   final Function(String value)? onSubmitted;
@@ -20,6 +22,7 @@ class PasswordTextField extends StatefulWidget {
     this.validator,
     this.textInputAction,
     this.onSubmitted,
+    required this.isFirst,
   }) : super(key: key);
 
   @override
@@ -37,7 +40,8 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       focusNode: widget.focusNode,
       textAlignVertical: TextAlignVertical.center,
       style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w400, color: AppColors.kBlack),
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode:
+          widget.isFirst ? AutovalidateMode.disabled : AutovalidateMode.onUserInteraction,
       keyboardType: TextInputType.visiblePassword,
       obscureText: passwordVisibility,
       textInputAction: widget.textInputAction ?? TextInputAction.done,

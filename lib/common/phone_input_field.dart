@@ -27,7 +27,7 @@ class PhoneTextFormField extends StatefulWidget {
     this.required = false,
     this.hasHeight = true,
     this.enabled = true,
-    this.canChangeCountry,
+    this.canChangeCountry, required this.isFirst,
   }) : super(key: key);
 
   final String? hintTitle;
@@ -46,6 +46,7 @@ class PhoneTextFormField extends StatefulWidget {
   final bool required;
   final bool enabled;
   final bool? canChangeCountry;
+  final bool isFirst;
 
   @override
   State<PhoneTextFormField> createState() => _PhoneTextFormFieldState();
@@ -86,12 +87,15 @@ class _PhoneTextFormFieldState extends State<PhoneTextFormField> {
       controller: widget.controller,
       keyboardType: widget.textInputType,
       textInputAction: widget.textInputAction,
-      autovalidateMode: AutovalidateMode.disabled,
+      autovalidateMode: widget.isFirst ? AutovalidateMode.disabled : AutovalidateMode.onUserInteraction,
       obscureText: widget.obscureText,
       onSaved: widget.onSaved,
       maxLines: widget.maxLines,
       textDirection: widget.textDirection,
       decoration: FormInputDecoration(
+        hintText: country.countryCode.toLowerCase() == eg
+            ? '01xx xxx xxxx'
+            : '${country.phoneCode} ${country.example}',
         errorStyle: TextStyle(fontFamily: 'Alexandria'),
         label: AppText(
           'ادخل رقم الهاتف',

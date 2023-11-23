@@ -13,68 +13,70 @@ class RewardsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(16.w),
-            decoration: BoxDecoration(
-                color: AppColors.kPrimaryBackground,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(18.r),
-                  bottomRight: Radius.circular(18.r),
-                )),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      children: [
-                        AppText(
-                          'الرصيد الحالي',
-                          size: 12.sp,
-                          weight: FontWeight.w400,
-                          color: AppColors.kWhite,
-                        ),
-                        6.sbH,
-                        AppText(
-                          'EGP 1,200',
-                          size: 20.sp,
-                          weight: FontWeight.w500,
-                          color: AppColors.kWhite,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        AppText(
-                          'إجمالي الحوافز',
-                          size: 12.sp,
-                          weight: FontWeight.w400,
-                          color: AppColors.kWhite,
-                        ),
-                        6.sbH,
-                        AppText(
-                          'EGP 7,200',
-                          size: 20.sp,
-                          weight: FontWeight.w500,
-                          color: AppColors.kWhite,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                8.sbH,
-              ],
-            ),
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.all(16.w),
+          decoration: BoxDecoration(
+              color: AppColors.kPrimaryBackground,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(18.r),
+                bottomRight: Radius.circular(18.r),
+              )),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(
+                    children: [
+                      AppText(
+                        'الرصيد الحالي',
+                        size: 12.sp,
+                        weight: FontWeight.w400,
+                        color: AppColors.kWhite,
+                      ),
+                      6.sbH,
+                      AppText(
+                        'EGP 1,200',
+                        size: 20.sp,
+                        weight: FontWeight.w500,
+                        color: AppColors.kWhite,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      AppText(
+                        'إجمالي الحوافز',
+                        size: 12.sp,
+                        weight: FontWeight.w400,
+                        color: AppColors.kWhite,
+                      ),
+                      6.sbH,
+                      AppText(
+                        'EGP 7,200',
+                        size: 20.sp,
+                        weight: FontWeight.w500,
+                        color: AppColors.kWhite,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              8.sbH,
+            ],
           ),
-          16.sbH,
-          DefaultTabController(
+        ),
+        16.sbH,
+        Expanded(
+          child: DefaultTabController(
             length: 2,
             child: Column(
+              mainAxisSize: MainAxisSize.max,
               children: [
                 Container(
                   decoration: BoxDecoration(
@@ -98,7 +100,6 @@ class RewardsScreen extends StatelessWidget {
                       color: AppColors.kIndicatorColor,
                       fontFamily: 'Alexandria',
                     ),
-
                     labelPadding: const EdgeInsets.symmetric(vertical: 4),
                     // labelColor: Color(0xff2a2a2a),
                     tabs: const [
@@ -107,21 +108,20 @@ class RewardsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height - 150,
-                  child: const TabBarView(
+                const Flexible(
+                  child: TabBarView(
                     physics: NeverScrollableScrollPhysics(),
                     children: [
                       AwardsView(),
-                      TransactionsView()
+                      TransactionsView(),
                     ],
                   ),
                 )
               ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

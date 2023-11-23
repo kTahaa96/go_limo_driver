@@ -8,9 +8,11 @@ import 'package:golimo_driver/core/models/driver_order_response/trips_response.d
 import 'package:golimo_driver/core/models/fuel/fuel_request_model.dart';
 import 'package:golimo_driver/core/models/fuel/get_fuel_histor_response.dart';
 import 'package:golimo_driver/core/models/general_response.dart';
+import 'package:golimo_driver/core/models/home_module/home_module_response.dart';
 import 'package:golimo_driver/core/models/userr_response/login_response.dart';
 import 'package:golimo_driver/helpers/network/remote/api_endpoints.dart';
 import 'package:golimo_driver/helpers/network/repository.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'dio/dio_helper.dart';
 
@@ -94,6 +96,22 @@ class RepoImpl extends Repository {
       onSuccess: () async {
         final f = await dioHelper.get(EndPoints.getTransactions);
         return TransactionsResponse.fromJson(f.data);
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, HomeModuleResponse>> getHomeData(LatLng currentLocation) {
+    return _responseHandling<HomeModuleResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.get(
+          EndPoints.home,
+          queryParams: {
+            'latitude': currentLocation.latitude,
+            'longitude': currentLocation.longitude,
+          },
+        );
+        return HomeModuleResponse.fromJson(f.data);
       },
     );
   }

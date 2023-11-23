@@ -9,13 +9,11 @@ import 'package:golimo_driver/feature/modules/notificatiton_center/cubit/notific
 import 'package:golimo_driver/feature/modules/rewards/cubit/rewards_cubit.dart';
 import 'package:golimo_driver/feature/splash/cubit/splash_cubit.dart';
 import 'package:golimo_driver/helpers/local/cache_helper.dart';
-import 'package:golimo_driver/helpers/location_helper/cubit/location_cubit.dart';
 import 'package:golimo_driver/helpers/network/cubit/cubit.dart';
 import 'package:golimo_driver/helpers/network/dio/dio_helper.dart';
 import 'package:golimo_driver/helpers/network/dio/wrapper.dart';
 import 'package:golimo_driver/helpers/network/repository.dart';
 import 'package:golimo_driver/helpers/network/repository_impl.dart';
-import 'package:golimo_driver/helpers/theme/theme_cubit.dart';
 import 'package:golimo_driver/helpers/theme/theme_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ua_client_hints/ua_client_hints.dart';
@@ -48,9 +46,8 @@ Future init() async {
   di.registerFactory<DriverOrdersCubit>(() => DriverOrdersCubit(repository: di<Repository>()));
   di.registerFactory<FuelCubit>(() => FuelCubit(repository: di<Repository>()));
   di.registerFactory<RewardsCubit>(() => RewardsCubit(repository: di<Repository>()));
-  // di.registerFactory<LocationCubit>(() => LocationCubit(repository: di<Repository>()));
   di.registerFactory<HomeLayOutCubit>(() => HomeLayOutCubit());
-  di.registerFactory<HomeCubit>(() => HomeCubit());
+  di.registerFactory<HomeCubit>(() => HomeCubit(repository: di<Repository>()));
   di.registerFactory<NotificationCenterCubit>(() => NotificationCenterCubit());
   di.registerFactory<BookingDetailsCubit>(() => BookingDetailsCubit());
   di.registerFactory<ThemeCubit>(() => ThemeCubit());

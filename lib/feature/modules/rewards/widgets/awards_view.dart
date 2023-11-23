@@ -24,25 +24,27 @@ class AwardsView extends StatelessWidget {
               cubit.getAwards();
             },
           ),
-          loadingBuilder: (context) => AppLoader(),
+          loadingBuilder: (context) => const AppLoader(),
           fallback: (context) => CustomRefreshIndicator(
-            onRefresh: (){
+            onRefresh: () {
               cubit.getAwards();
             },
-            child: ListView.separated(
-                padding: EdgeInsets.symmetric(horizontal: 19.w),
-                separatorBuilder: (context, index) => const Divider(thickness: 2),
-                itemCount: cubit.awardsResponse!.data.length,
-                shrinkWrap: true,
-                // physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return RewardsSingleItem(
-                    date: cubit.awardsResponse!.data[index].createdAt,
-                    label: cubit.awardsResponse!.data[index].award.name,
-                    amount: 90,
-                    isPlus: true,
-                  );
-                }),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: ListView.separated(
+                  padding: EdgeInsets.symmetric(horizontal: 19.w),
+                  separatorBuilder: (context, index) => const Divider(thickness: 2),
+                  itemCount: cubit.awardsResponse!.data.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return RewardsSingleItem(
+                      date: cubit.awardsResponse!.data[index].createdAt,
+                      label: cubit.awardsResponse!.data[index].award.name,
+                      amount: 90,
+                      isPlus: true,
+                    );
+                  }),
+            ),
           ),
         );
       },

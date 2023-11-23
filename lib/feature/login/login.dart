@@ -27,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final FocusNode phoneNode = FocusNode();
   final FocusNode passwordNode = FocusNode();
   final formKey = GlobalKey<FormState>();
+  bool isFirst = true;
 
   @override
   void dispose() {
@@ -68,6 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   55.sbH,
                   PhoneTextFormField(
+                    isFirst: isFirst,
                     canChangeCountry: false,
                     focusNode: phoneNode,
                     controller: phoneController,
@@ -81,6 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   32.sbH,
                   PasswordTextField(
+                    isFirst: isFirst,
                     controller: passwordController,
                     focusNode: passwordNode,
                     labelText: "Password",
@@ -104,6 +107,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: CustomButton(
                         buttonText: 'تسجيل الدخول',
                         onBtnTap: () {
+                          FocusScope.of(context).unfocus();
+                          if (isFirst) {
+                            setState(() {
+                              isFirst = false;
+                            });
+                          }
                           if (formKey.currentState!.validate()) {
                             cubit.login(
                               phone: phoneController.text,

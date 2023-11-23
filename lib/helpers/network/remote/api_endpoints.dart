@@ -9,6 +9,7 @@ class EndPoints {
   static const String getFuelHistory = 'fuel';
   static const String getTransactions = 'incentives/transactions';
   static const String getAwards = 'incentives/awards';
+  static const String home = 'home';
 
 
   static bool get isProduction => dotenv.env['ENV_TYPE'] == 'production';

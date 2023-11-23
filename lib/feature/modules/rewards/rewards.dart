@@ -13,115 +13,113 @@ class RewardsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(16.w),
-            decoration: BoxDecoration(
-                color: AppColors.kPrimaryBackground,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(18.r),
-                  bottomRight: Radius.circular(18.r),
-                )),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      children: [
-                        AppText(
-                          'الرصيد الحالي',
-                          size: 12.sp,
-                          weight: FontWeight.w400,
-                          color: AppColors.kWhite,
-                        ),
-                        6.sbH,
-                        AppText(
-                          'EGP 1,200',
-                          size: 20.sp,
-                          weight: FontWeight.w500,
-                          color: AppColors.kWhite,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        AppText(
-                          'إجمالي الحوافز',
-                          size: 12.sp,
-                          weight: FontWeight.w400,
-                          color: AppColors.kWhite,
-                        ),
-                        6.sbH,
-                        AppText(
-                          'EGP 7,200',
-                          size: 20.sp,
-                          weight: FontWeight.w500,
-                          color: AppColors.kWhite,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                8.sbH,
-              ],
-            ),
+    return Column(
+      children: [
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.all(16.w),
+          decoration: BoxDecoration(
+              color: AppColors.kPrimaryBackground,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(18.r),
+                bottomRight: Radius.circular(18.r),
+              )),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(
+                    children: [
+                      AppText(
+                        'الرصيد الحالي',
+                        size: 12.sp,
+                        weight: FontWeight.w400,
+                        color: AppColors.kWhite,
+                      ),
+                      6.sbH,
+                      AppText(
+                        'EGP 1,200',
+                        size: 20.sp,
+                        weight: FontWeight.w500,
+                        color: AppColors.kWhite,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      AppText(
+                        'إجمالي الحوافز',
+                        size: 12.sp,
+                        weight: FontWeight.w400,
+                        color: AppColors.kWhite,
+                      ),
+                      6.sbH,
+                      AppText(
+                        'EGP 7,200',
+                        size: 20.sp,
+                        weight: FontWeight.w500,
+                        color: AppColors.kWhite,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              8.sbH,
+            ],
           ),
-          16.sbH,
-          DefaultTabController(
-            length: 2,
-            child: Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.kIndicatorColor,
+        ),
+        16.sbH,
+        DefaultTabController(
+          length: 2,
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: AppColors.kIndicatorColor,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                margin: EdgeInsets.symmetric(horizontal: 50.w),
+                padding: const EdgeInsets.all(2),
+                child: TabBar(
+                  indicator: BoxDecoration(
+                    color: AppColors.kWhite,
                     borderRadius: BorderRadius.circular(25),
                   ),
-                  margin: EdgeInsets.symmetric(horizontal: 50.w),
-                  padding: const EdgeInsets.all(2),
-                  child: TabBar(
-                    indicator: BoxDecoration(
-                      color: AppColors.kWhite,
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    labelColor: AppColors.kIndicatorColor,
-                    unselectedLabelColor: AppColors.kWhite,
-                    unselectedLabelStyle: const TextStyle(
-                      color: AppColors.kWhite,
-                      fontFamily: 'Alexandria',
-                    ),
-                    labelStyle: const TextStyle(
-                      color: AppColors.kIndicatorColor,
-                      fontFamily: 'Alexandria',
-                    ),
+                  labelColor: AppColors.kIndicatorColor,
+                  unselectedLabelColor: AppColors.kWhite,
+                  unselectedLabelStyle: const TextStyle(
+                    color: AppColors.kWhite,
+                    fontFamily: 'Alexandria',
+                  ),
+                  labelStyle: const TextStyle(
+                    color: AppColors.kIndicatorColor,
+                    fontFamily: 'Alexandria',
+                  ),
 
-                    labelPadding: const EdgeInsets.symmetric(vertical: 4),
-                    // labelColor: Color(0xff2a2a2a),
-                    tabs: const [
-                      Text("حوافز مالية"),
-                      Text("جوائز فورية"),
-                    ],
-                  ),
+                  labelPadding: const EdgeInsets.symmetric(vertical: 4),
+                  // labelColor: Color(0xff2a2a2a),
+                  tabs: const [
+                    Text("حوافز مالية"),
+                    Text("جوائز فورية"),
+                  ],
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height - 150,
-                  child: const TabBarView(
-                    physics: NeverScrollableScrollPhysics(),
-                    children: [
-                      AwardsView(),
-                      TransactionsView()
-                    ],
-                  ),
-                )
-              ],
-            ),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height - 320,
+                child: const TabBarView(
+                  physics: NeverScrollableScrollPhysics(),
+                  children: [
+                    AwardsView(),
+                    TransactionsView()
+                  ],
+                ),
+              )
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

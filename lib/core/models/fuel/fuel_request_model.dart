@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:image_picker/image_picker.dart';
 
 class FuelApiRequestModel {
@@ -6,9 +8,9 @@ class FuelApiRequestModel {
   int litersNo;
   int kilometersBefore;
   int kilometersAfter;
-  XFile meterImageBefore;
-  XFile meterImageAfter;
-  XFile receiptImage;
+  File meterImageBefore;
+  File meterImageAfter;
+  File receiptImage;
 
   FuelApiRequestModel({
     required this.type,

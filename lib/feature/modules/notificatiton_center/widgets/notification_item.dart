@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/core/consts/app_colors.dart';
 import 'package:golimo_driver/core/consts/notification_list.dart';
+import 'package:golimo_driver/core/models/home_module/notification_item.dart';
 import 'package:golimo_driver/feature/modules/home/widgets/enter_reason_view.dart';
 import 'package:golimo_driver/feature/modules/home/widgets/stop_reason_view.dart';
 import 'package:golimo_driver/helpers/ui_helpers/bottom_sheet_helper.dart';
@@ -27,24 +28,24 @@ class NotificationItem extends StatelessWidget {
                   padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Color(0xffDC9CEC).withOpacity(0.5),
+                    color: const Color(0xffDC9CEC).withOpacity(0.5),
                   ),
-                  child: buildImg(status: model.status)),
+                  child: buildImg(status: model.type)),
               8.sbW,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppText(
-                    '${model.title}',
+                    '${model.name}',
                     size: 13.sp,
                     weight: FontWeight.w600,
                     color: AppColors.kBlack,
                   ),
                   5.sbH,
                   SizedBox(
-                    width: model.status == 2 || model.status == 3 ? 180.w : 270.w,
+                    width: model.type == 2 || model.type == 3 ? 180.w : 270.w,
                     child: AppText(
-                      model.desc,
+                      model.description,
                       size: 12.sp,
                       maxLines: 1,
                       weight: FontWeight.w400,
@@ -57,10 +58,10 @@ class NotificationItem extends StatelessWidget {
           ),
           Row(
             children: [
-              buildButton(model.status, context),
+              buildButton(model.type, context),
               8.sbW,
               AppText(
-                '${model.dateAgo}',
+                '${model.createdAt}',
                 size: 10.sp,
                 weight: FontWeight.w400,
                 color: AppColors.kGrayText,
@@ -73,7 +74,7 @@ class NotificationItem extends StatelessWidget {
   }
 
   Widget buildImg({required int status}) {
-    return model.status == 5
+    return model.type == 5
         ? AppText(
             '30',
             size: 13.sp,
@@ -96,7 +97,7 @@ class NotificationItem extends StatelessWidget {
   }
 
   Widget buildButton(int status, BuildContext context) {
-    return model.status == 2
+    return model.type == 2
         ? InkWell(
             onTap: () {
               BottomSheetHelper.gShowModalBottomSheet(
@@ -132,7 +133,7 @@ class NotificationItem extends StatelessWidget {
               ),
             ),
           )
-        : model.status == 3
+        : model.type == 3
             ? Container(
                 padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 10.w),
                 alignment: Alignment.center,
@@ -145,6 +146,6 @@ class NotificationItem extends StatelessWidget {
                   color: AppColors.kWhite,
                 ),
               )
-            : SizedBox();
+            : const SizedBox();
   }
 }

@@ -34,7 +34,6 @@ class AwardsView extends StatelessWidget {
                 separatorBuilder: (context, index) => const Divider(thickness: 2),
                 itemCount: cubit.awardsResponse!.data.length,
                 shrinkWrap: true,
-                // physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return RewardsSingleItem(
                     date: cubit.awardsResponse!.data[index].createdAt,

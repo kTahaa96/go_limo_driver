@@ -42,7 +42,8 @@ dependencies:
   flutter_localization: ^0.1.14
   image_picker: ^1.0.4
   permission_handler: ^11.0.1
-
+  geolocator: ^9.0.1
+  geocoding: ^2.0.1
 
 
 

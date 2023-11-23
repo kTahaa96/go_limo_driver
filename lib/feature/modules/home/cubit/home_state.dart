@@ -1,17 +1,17 @@
 part of 'home_cubit.dart';
 
 @immutable
-abstract class HomeState {}
+abstract class HomeStates {}
 
-class InitialHomeState extends HomeState {}
+class InitialHomeState extends HomeStates {}
 
-class LoadingHomeState extends HomeState {}
+class LoadingHomeState extends HomeStates {}
 
-class ErrorHomeState extends HomeState {}
+class ErrorHomeState extends HomeStates {}
 
-class SuccessHomeState extends HomeState {}
+class SuccessHomeState extends HomeStates {}
 
 
-class ErrorGetLocationState extends HomeState {}
+class ErrorGetLocationState extends HomeStates {}
 
-class SuccessGetLocationState extends HomeState {}
+class SuccessGetLocationState extends HomeStates {}

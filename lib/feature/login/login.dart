@@ -10,9 +10,9 @@ import 'package:golimo_driver/common/phone_input_field.dart';
 import 'package:golimo_driver/common/text_hepler.dart';
 import 'package:golimo_driver/feature/login/cubit/login_cubit.dart';
 import 'package:golimo_driver/helpers/di/di.dart';
-import 'package:golimo_driver/helpers/navigator/named-navigator_impl.dart';
-import 'package:golimo_driver/helpers/navigator/named-navigator_routes.dart';
 import 'package:golimo_driver/helpers/ui_helpers/extentions.dart';
+import '../../helpers/navigator/nav_helper.dart';
+import '../home_page/home_layout.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is SuccessLoginState) {
-            NamedNavigatorImpl.push(Routes.homePage, clean: true);
+            Nav.replace(const HomePage(), context);
           }
           if (state is ErrorLoginState) {
             PopUpHelper.showSnakeBar(message: state.message);

@@ -19,7 +19,7 @@ class HomePageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocBuilder<HomeCubit, HomeStates>(
       builder: (context, state) {
         final cubit = HomeCubit.of(context);
         return StateConditionalBuilder(

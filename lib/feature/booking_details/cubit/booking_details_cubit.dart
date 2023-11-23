@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:golimo_driver/helpers/network/extensions/cubit_extension.dart';
 import 'package:meta/meta.dart';
 
 part 'booking_details_state.dart';
@@ -17,7 +18,7 @@ class BookingDetailsCubit extends Cubit<BookingDetailsState> {
   void changeOrderState(int newState) {
     orderStatus = newState;
     if (orderStatus == 1) {
-      emit(ConfirmReceiptBookState());
+      safeEmit(ConfirmReceiptBookState());
     } else if (orderStatus == 2) {
       emit(LoadingBookState());
     } else if (orderStatus == 3) {

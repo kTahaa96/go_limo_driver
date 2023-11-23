@@ -14,6 +14,7 @@ class RewardsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
       children: [
         Container(
           width: double.infinity,
@@ -71,52 +72,53 @@ class RewardsScreen extends StatelessWidget {
           ),
         ),
         16.sbH,
-        DefaultTabController(
-          length: 2,
-          child: Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: AppColors.kIndicatorColor,
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                margin: EdgeInsets.symmetric(horizontal: 50.w),
-                padding: const EdgeInsets.all(2),
-                child: TabBar(
-                  indicator: BoxDecoration(
-                    color: AppColors.kWhite,
+        Expanded(
+          child: DefaultTabController(
+            length: 2,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.kIndicatorColor,
                     borderRadius: BorderRadius.circular(25),
                   ),
-                  labelColor: AppColors.kIndicatorColor,
-                  unselectedLabelColor: AppColors.kWhite,
-                  unselectedLabelStyle: const TextStyle(
-                    color: AppColors.kWhite,
-                    fontFamily: 'Alexandria',
+                  margin: EdgeInsets.symmetric(horizontal: 50.w),
+                  padding: const EdgeInsets.all(2),
+                  child: TabBar(
+                    indicator: BoxDecoration(
+                      color: AppColors.kWhite,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    labelColor: AppColors.kIndicatorColor,
+                    unselectedLabelColor: AppColors.kWhite,
+                    unselectedLabelStyle: const TextStyle(
+                      color: AppColors.kWhite,
+                      fontFamily: 'Alexandria',
+                    ),
+                    labelStyle: const TextStyle(
+                      color: AppColors.kIndicatorColor,
+                      fontFamily: 'Alexandria',
+                    ),
+                    labelPadding: const EdgeInsets.symmetric(vertical: 4),
+                    // labelColor: Color(0xff2a2a2a),
+                    tabs: const [
+                      Text("حوافز مالية"),
+                      Text("جوائز فورية"),
+                    ],
                   ),
-                  labelStyle: const TextStyle(
-                    color: AppColors.kIndicatorColor,
-                    fontFamily: 'Alexandria',
+                ),
+                const Flexible(
+                  child: TabBarView(
+                    physics: NeverScrollableScrollPhysics(),
+                    children: [
+                      AwardsView(),
+                      TransactionsView(),
+                    ],
                   ),
-
-                  labelPadding: const EdgeInsets.symmetric(vertical: 4),
-                  // labelColor: Color(0xff2a2a2a),
-                  tabs: const [
-                    Text("حوافز مالية"),
-                    Text("جوائز فورية"),
-                  ],
-                ),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height - 320,
-                child: const TabBarView(
-                  physics: NeverScrollableScrollPhysics(),
-                  children: [
-                    AwardsView(),
-                    TransactionsView()
-                  ],
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ],

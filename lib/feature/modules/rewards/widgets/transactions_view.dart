@@ -24,25 +24,28 @@ class TransactionsView extends StatelessWidget {
               cubit.getAwards();
             },
           ),
-          loadingBuilder: (context) => AppLoader(),
+          loadingBuilder: (context) => const AppLoader(),
           fallback: (context) => CustomRefreshIndicator(
-            onRefresh: (){
+            onRefresh: () {
               cubit.getTransactions();
             },
-            child: ListView.separated(
-                padding: EdgeInsets.symmetric(horizontal: 19.w),
-                separatorBuilder: (context, index) => const Divider(thickness: 2),
-                itemCount: cubit.transactionsResponse!.data.length,
-                shrinkWrap: true,
-                // physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return RewardsSingleItem(
-                    isPlus: cubit.transactionsResponse!.data[index].type == 'credit',
-                    amount: cubit.transactionsResponse!.data[index].balance,
-                    date: cubit.transactionsResponse!.data[index].createdAt,
-                    label: cubit.transactionsResponse!.data[index].title,
-                  );
-                }),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: ListView.separated(
+                  padding: EdgeInsets.symmetric(horizontal: 19.w),
+                  separatorBuilder: (context, index) => const Divider(thickness: 2),
+                  itemCount: cubit.transactionsResponse!.data.length,
+                  shrinkWrap: true,
+                  // physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return RewardsSingleItem(
+                      isPlus: cubit.transactionsResponse!.data[index].type == 'credit',
+                      amount: cubit.transactionsResponse!.data[index].balance,
+                      date: cubit.transactionsResponse!.data[index].createdAt,
+                      label: cubit.transactionsResponse!.data[index].title,
+                    );
+                  }),
+            ),
           ),
         );
       },

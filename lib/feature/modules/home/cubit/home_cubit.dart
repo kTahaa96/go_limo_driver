@@ -7,12 +7,13 @@ import 'package:golimo_driver/core/models/driver_order_response/driver_trips_ite
 import 'package:golimo_driver/core/models/home_module/home_module_response.dart';
 import 'package:golimo_driver/core/models/home_module/notification_item.dart';
 import 'package:golimo_driver/helpers/navigator/named-navigator_impl.dart';
+import 'package:golimo_driver/helpers/network/extensions/cubit_extension.dart';
 import 'package:golimo_driver/helpers/network/repository.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 part 'home_state.dart';
 
-class HomeCubit extends Cubit<HomeState> {
+class HomeCubit extends Cubit<HomeStates> {
   final Repository repository;
 
   HomeCubit({required this.repository}) : super(InitialHomeState());
@@ -28,18 +29,17 @@ class HomeCubit extends Cubit<HomeState> {
   late Position _currentPosition;
 
   void getHomeData() async {
-    emit(LoadingHomeState());
+    safeEmit(LoadingHomeState());
     await _getCurrentPosition();
     final f =
         await repository.getHomeData(LatLng(_currentPosition.latitude, _currentPosition.longitude));
     f.fold((l) {
-      emit(ErrorHomeState());
+      safeEmit(ErrorHomeState());
     }, (r) {
       homeModuleResponse = r;
-
       todayTrips = homeModuleResponse!.data.todayTrips;
       onGoingTrips = homeModuleResponse!.data.ongoingTrips;
-      emit(SuccessHomeState());
+      safeEmit(SuccessHomeState());
     });
   }
 
@@ -80,9 +80,9 @@ class HomeCubit extends Cubit<HomeState> {
         .then((Position position) {
       _currentPosition = position;
       log('${_currentPosition.latitude} , ${_currentPosition.longitude}');
-      emit(SuccessGetLocationState());
+      safeEmit(SuccessGetLocationState());
     }).catchError((e) {
-      emit(ErrorGetLocationState());
+      safeEmit(ErrorGetLocationState());
       debugPrint(e);
     });
   }
